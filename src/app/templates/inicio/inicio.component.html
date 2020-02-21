@@ -1,0 +1,417 @@
+
+<!-- Banner
+================================================== -->
+<div class="parallax" data-background="assets/images/HM_LM5.jpg" data-color="#36383e" data-color-opacity="0.3" data-img-width="2500" data-img-height="1600" style=" background-size: 1387.22px 887.818px;">
+	<div class="parallax-content">
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+
+					<!-- Main Search Container -->
+					<div class="main-search-container">
+						<h2 style="font-size: 25px;">Encontre seu imóvel perto da sua faculdade</h2>
+						
+						<!-- Main Search -->
+						<form class="main-search-form">
+							
+							<!-- Type -->
+							<div class="search-type">
+								<label class="active"><input class="first-tab" name="tab" [checked]="alugar" type="radio" (click)="alugarf()">Alugar</label>
+								<!--<label><input name="tab" type="radio" [checked]="comprar" (click)="comprarf()">Comprar</label>-->
+								<div class="search-type-arrow"></div>
+							</div>
+
+							
+							<!-- Box -->
+							<div class="main-search-box">
+								
+								<!-- Main Search Input -->
+								<div class="main-search-input larger-input">
+									<input  type="text" class="ico-01" id="autocomplete-input" placeholder="Busque a cidade, bairro, rua ou universidade" ngx-google-places-autocomplete #placesRef="ngx-places" [options]='options' (onAddressChange)="handleAddressChange($event)" #endereco/>
+									<button class="button" (click)="pesquisar(endereco.value, tipo.value, min_preco.value, max_preco.value, min_area.values, max_area.value, quartos.value, banheiros.value)">Buscar</button>
+								</div>
+
+								<!-- Row -->
+								<div class="row with-forms">
+
+									<!-- Property Type -->
+									<div class="col-md-4">
+										<select data-placeholder="Todos os tipos" class="chosen-select-no-single" #tipo >
+											<option value="0">Todos os tipos</option>	
+											<option value="1">Apartamentos</option>
+											<option value="2">Casas</option>
+											<option value="3">Kitnet</option>
+											<option value="4">Pensionato</option>
+										</select>
+									</div>
+
+
+									<!-- Min Price -->
+									<div class="col-md-4">
+										
+										<!-- Select Input -->
+										<div class="select-input">
+											<input type="number" placeholder="Minimo" data-unit="R$" #min_preco>
+										</div>
+										<!-- Select Input / End -->
+
+									</div>
+
+
+									<!-- Max Price -->
+									<div class="col-md-4">
+										
+										<!-- Select Input -->
+										<div class="select-input">
+											<input type="number" placeholder="Maximo" data-unit="R$" #max_preco>
+										</div>
+										<!-- Select Input / End -->
+
+									</div>
+
+								</div>
+								<!-- Row / End -->
+
+
+								<!-- More Search Options -->
+								<a  [class]="m_opcoes" data-open-title="Mais Opções" data-close-title="Menos Opções" (click)="maisOpcoes()"></a>
+
+								<div [class]="m_opcoes2">
+									<div class="more-search-options-container">
+
+										<!-- Row -->
+										<div class="row with-forms">
+
+											<!-- Min Price -->
+											<div class="col-md-6">
+												
+												<!-- Select Input -->
+												<div class="select-input">
+													<input type="number" placeholder="Minimo área" data-unit="m²" #min_area>
+												</div>
+												<!-- Select Input / End -->
+
+											</div>
+
+											<!-- Max Price -->
+											<div class="col-md-6">
+												
+												<!-- Select Input -->
+												<div class="select-input">
+													<input type="number" placeholder="Maximo área" data-unit="m²" #max_area>
+												</div>
+												<!-- Select Input / End -->
+
+											</div>
+
+										</div>
+										<!-- Row / End -->
+
+
+										<!-- Row -->
+										<div class="row with-forms">
+
+											<!-- Min Area -->
+											<div class="col-md-6">
+												<select data-placeholder="Quartos" class="chosen-select-no-single" #quartos>
+													<option label="blank"></option>	
+													<option value="0">Quartos</option>	
+													<option value="1">1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+													<option value="4">4</option>
+													<option value="5">5</option>
+												</select>
+											</div>
+
+											<!-- Max Area -->
+											<div class="col-md-6">
+												<select data-placeholder="Banheiros" class="chosen-select-no-single" #banheiros>
+													<option label="blank"></option>	
+													<option value="0">Banheiros</option>	
+													<option value="1">1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+													<option value="4">4</option>
+													<option value="5">5</option>
+												</select>
+											</div>
+
+										</div>
+										<!-- Row / End -->
+
+									</div>
+								</div>
+								<!-- More Search Options / End -->
+
+
+							</div>
+							<!-- Box / End -->
+
+						</form>
+						<!-- Main Search -->
+
+					</div>
+					<!-- Main Search Container / End -->
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+<!-- Content
+================================================== -->
+<div class="container">
+	<div class="row">
+	
+		<div class="col-md-12">
+			<h3 class="headline margin-bottom-25 margin-top-65">Destaque</h3>
+		</div>
+		
+		<!-- Carousel -->
+		<div class="col-md-12">
+			<div class="carousel">
+				
+
+				<!-- Listing Item -->
+				<div class="carousel-item">
+					<div class="listing-item">
+
+						<a (click)="verImovel(imoveis[0].id_imovel, imoveis[0].longitude, imoveis[0].latitude, imoveis[0].preco)" class="listing-img-container">
+
+							<div class="listing-badges">
+								<span>Alugar</span>
+							</div>
+
+							<div class="listing-img-content">
+								<span class="listing-price">R${{imoveis[0].preco}} <i>por mês</i></span>
+								<!--<span class="like-icon with-tip" data-tip-content="Add to Bookmarks"></span>-->
+							</div>
+
+							<img  style="height: 300px"  [src]="global.endreco_foto+'imoveis/'+imoveis[0].id_imovel+'_0.jpg'" alt="">
+
+						</a>
+						
+						<div class="listing-content">
+
+							<div class="listing-title">
+								<h4><a (click)="verImovel(imoveis[0].id_imovel, imoveis[0].longitude, imoveis[0].latitude, imoveis[0].preco)">{{ (imoveis[0].endereco.length>24)? (imoveis[0].endereco | slice:0:24)+'..':(imoveis[0].endereco) }}</a></h4>
+								<a class="listing-address popup-gmaps">
+									<i class="fa fa-map-marker"></i>
+									{{imoveis[0].bairro}}, {{imoveis[0].cidade}}
+								</a>
+							</div>
+
+							<ul class="listing-features">
+								<li>Área <span>{{(imoveis[0].area == 0)? '-':(imoveis[0].area)}} m²</span></li>
+								<li>Quartos <span>{{imoveis[0].quartos}}</span></li>
+								<li>Banheiros <span>{{imoveis[0].banheiros}}</span></li>
+							</ul>
+
+							<!--<div class="listing-footer">
+								<a routerLink="#"><i class="fa fa-user"></i> {{imoveis[0].proprietario}}</a>
+								<span><i class="fa fa-calendar-o"></i> {{imoveis[0].data}} dias</span>
+							</div>-->
+
+						</div>
+
+					</div>
+				</div>
+				<!-- Listing Item / End -->
+
+				<!-- Listing Item -->
+				<div class="carousel-item">
+					<div class="listing-item">
+
+						<a (click)="verImovel(imoveis[1].id_imovel, imoveis[1].longitude, imoveis[1].latitude, imoveis[1].preco)" class="listing-img-container">
+
+							<div class="listing-badges">
+								<span>Alugar</span>
+							</div>
+
+							<div class="listing-img-content">
+								<span class="listing-price">R${{imoveis[1].preco}} <i>por mês</i></span>
+								<!--<span class="like-icon with-tip" data-tip-content="Add to Bookmarks"></span>-->
+							</div>
+
+							<img style="height: 300px"  [src]="global.endreco_foto+'imoveis/'+imoveis[1].id_imovel+'_0.jpg'" alt="">
+
+						</a>
+						
+						<div class="listing-content">
+
+							<div class="listing-title">
+								<h4><a (click)="verImovel(imoveis[1].id_imovel, imoveis[1].longitude, imoveis[1].latitude, imoveis[1].preco)">{{ (imoveis[1].endereco.length>24)? (imoveis[1].endereco | slice:0:24)+'..':(imoveis[1].endereco) }}</a></h4>
+								<a class="listing-address popup-gmaps">
+									<i class="fa fa-map-marker"></i>
+									{{imoveis[1].bairro}}, {{imoveis[1].cidade}}
+								</a>
+							</div>
+
+							<ul class="listing-features">
+								<li>Área <span>{{(imoveis[1].area == 0)? '-':(imoveis[1].area)}} m²</span></li>
+								<li>Quartos <span>{{imoveis[1].quartos}}</span></li>
+								<li>Banheiros <span>{{imoveis[1].banheiros}}</span></li>
+							</ul>
+
+							<!--<div class="listing-footer">
+								<a routerLink="#"><i class="fa fa-user"></i> {{imoveis[1].proprietario}}</a>
+								<span><i class="fa fa-calendar-o"></i> {{imoveis[1].data}} dias</span>
+							</div>-->
+
+						</div>
+
+					</div>
+				</div>
+				<!-- Listing Item / End -->
+
+				<!-- Listing Item -->
+				<div class="carousel-item">
+					<div class="listing-item">
+
+						<a (click)="verImovel(imoveis[2].id_imovel, imoveis[2].longitude, imoveis[2].latitude, imoveis[2].preco)" class="listing-img-container">
+
+							<div class="listing-badges">
+								<span>Alugar</span>
+							</div>
+
+							<div class="listing-img-content">
+								<span class="listing-price">R${{imoveis[2].preco}} <i>por mês</i></span>
+								<!--<span class="like-icon with-tip" data-tip-content="Add to Bookmarks"></span>-->
+							</div>
+
+							<img style="height: 300px"  [src]="global.endreco_foto+'imoveis/'+imoveis[2].id_imovel+'_0.jpg'" alt="">
+
+						</a>
+						
+						<div class="listing-content">
+
+							<div class="listing-title">
+								<h4><a (click)="verImovel(imoveis[2].id_imovel, imoveis[2].longitude, imoveis[2].latitude, imoveis[2].preco)">{{ (imoveis[2].endereco.length>24)? (imoveis[2].endereco | slice:0:24)+'..':(imoveis[2].endereco) }}</a></h4>
+								<a class="listing-address popup-gmaps">
+									<i class="fa fa-map-marker"></i>
+									{{imoveis[2].bairro}}, {{imoveis[2].cidade}}
+								</a>
+							</div>
+
+							<ul class="listing-features">
+								<li>Área <span>{{(imoveis[2].area == 0)? '-':(imoveis[2].area)}} m²</span></li>
+								<li>Quartos <span>{{imoveis[2].quartos}}</span></li>
+								<li>Banheiros <span>{{imoveis[2].banheiros}}</span></li>
+							</ul>
+
+							<!--<div class="listing-footer">
+								<a routerLink="#"><i class="fa fa-user"></i> {{imoveis[2].proprietario}}</a>
+								<span><i class="fa fa-calendar-o"></i> {{imoveis[2].data}} dias</span>
+							</div>-->
+
+						</div>
+
+					</div>
+				</div>
+				<!-- Listing Item / End -->
+
+				<!-- Listing Item -->
+				<div class="carousel-item">
+					<div class="listing-item">
+
+						<a (click)="verImovel(imoveis[3].id_imovel, imoveis[3].longitude, imoveis[3].latitude, imoveis[3].preco)" class="listing-img-container">
+
+							<div class="listing-badges">
+								<span>Alugar</span>
+							</div>
+
+							<div class="listing-img-content">
+								<span class="listing-price">R${{imoveis[3].preco}} <i>por mês</i></span>
+								<!--<span class="like-icon with-tip" data-tip-content="Add to Bookmarks"></span>-->
+							</div>
+
+							<img style="height: 300px"  [src]="global.endreco_foto+'imoveis/'+imoveis[3].id_imovel+'_0.jpg'" alt="">
+
+						</a>
+						
+						<div class="listing-content">
+
+							<div class="listing-title">
+								<h4><a (click)="verImovel(imoveis[3].id_imovel, imoveis[3].longitude, imoveis[3].latitude, imoveis[3].preco)">{{ (imoveis[3].endereco.length>24)? (imoveis[3].endereco | slice:0:24)+'..':(imoveis[3].endereco) }}</a></h4>
+								<a class="listing-address popup-gmaps">
+									<i class="fa fa-map-marker"></i>
+									{{imoveis[3].bairro}}, {{imoveis[3].cidade}}
+								</a>
+							</div>
+
+							<ul class="listing-features">
+								<li>Área <span>{{(imoveis[3].area == 0)? '-':(imoveis[3].area)}} m²</span></li>
+								<li>Quartos <span>{{imoveis[3].quartos}}</span></li>
+								<li>Banheiros <span>{{imoveis[3].banheiros}}</span></li>
+							</ul>
+
+							<!--<div class="listing-footer">
+								<a routerLink="#"><i class="fa fa-user"></i> {{imoveis[3].proprietario}}</a>
+								<span><i class="fa fa-calendar-o"></i> {{imoveis[3].data}} dias</span>
+							</div>-->
+
+						</div>
+
+					</div>
+				</div>
+				<!-- Listing Item / End -->
+
+				<!-- Listing Item -->
+				<div class="carousel-item">
+					<div class="listing-item">
+
+						<a (click)="verImovel(imoveis[4].id_imovel, imoveis[4].longitude, imoveis[4].latitude, imoveis[4].preco)" class="listing-img-container">
+
+							<div class="listing-badges">
+								<span>Alugar</span>
+							</div>
+
+							<div class="listing-img-content">
+								<span class="listing-price">R${{imoveis[4].preco}} <i>por mês</i></span>
+								<!--<span class="like-icon with-tip" data-tip-content="Add to Bookmarks"></span>-->
+							</div>
+
+							<img style="height: 300px"  [src]="global.endreco_foto+'imoveis/'+imoveis[4].id_imovel+'_0.jpg'" alt="">
+
+						</a>
+
+						<div class="listing-content">
+
+							<div class="listing-title">
+								<h4><a (click)="verImovel(imoveis[4].id_imovel, imoveis[4].longitude, imoveis[4].latitude, imoveis[4].preco)">{{ (imoveis[4].endereco.length>24)? (imoveis[4].endereco | slice:0:24)+'..':(imoveis[4].endereco) }}</a></h4>
+								<a class="listing-address popup-gmaps">
+									<i class="fa fa-map-marker"></i>
+									{{imoveis[4].bairro}}, {{imoveis[4].cidade}}
+								</a>
+							</div>
+
+							<ul class="listing-features">
+								<li>Área <span>{{(imoveis[4].area == 0)? '-':(imoveis[4].area)}} m²</span></li>
+								<li>Quartos <span>{{imoveis[4].quartos}}</span></li>
+								<li>Banheiros <span>{{imoveis[4].banheiros}}</span></li>
+							</ul>
+
+							<!--<div class="listing-footer">
+								<a routerLink="#"><i class="fa fa-user"></i> {{imoveis[4].proprietario}}</a>
+								<span><i class="fa fa-calendar-o"></i> {{imoveis[4].data}} dias</span>
+							</div>-->
+
+						</div>
+
+					</div>
+				</div>
+				<!-- Listing Item / End -->
+			</div>
+		</div>
+		<!-- Carousel / End -->
+
+	</div>
+</div>
+
+
+

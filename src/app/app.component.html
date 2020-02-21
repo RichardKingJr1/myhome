@@ -1,0 +1,147 @@
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <mat-sidenav-container >
+        <!-- Side Menu
+================================================== -->
+        <mat-sidenav #sidenav mode="push" [(opened)]="opened">
+            <h3  style="color: white; text-align: center;">Menu</h3>
+            <ul style="list-style-type:none;">
+                 <!--<li class="menu-mobile"><a class="texto" [class]="inicio" (click)="selecionar2(1)" routerLink="/"  >Inicio</a></li>
+                <li class="menu-mobile"><a class="texto" [class]="contato" (click)="selecionar2(2)" routerLink="/contato">Contato</a></li>
+                <li class="menu-mobile"><a class="texto" [class]="anuncie" (click)="selecionar2(3)" routerLink="/enviar-propriedade">Anuncie seu imóvel</a></li>
+                <li class="menu-mobile"><a class="texto" [class]="anuncie" (click)="selecionar2(1)" routerLink="/login">Login</a></li>-->
+                <li class="menu-mobile"><a class="texto" [class]="inicio"   (click)="sidenav.toggle()"  routerLink="/"  >Inicio</a></li>
+                <li class="menu-mobile"><a class="texto" [class]="contato"  (click)="sidenav.toggle()"  routerLink="/contato">Contato</a></li>
+                <li class="menu-mobile"><a class="texto" [class]="anuncie"  (click)="sidenav.toggle()"  routerLink="/enviar-propriedade">Anuncie seu imóvel</a></li>
+                <li class="menu-mobile"><a class="texto"  (click)="logar2()"  *ngIf="!visivelGlobal.visivel_logado">Login</a></li>
+                <li class="menu-mobile"><a class="texto" routerLink="/dados" (click)="sidenav.toggle()"  *ngIf="visivelGlobal.visivel_logado">Perfil</a></li>
+            </ul>
+        </mat-sidenav>
+        <mat-sidenav-content>
+
+<!-- Header Container
+================================================== -->
+<header id="header-container" >
+    
+    <!-- Header -->
+    <div id="header" >
+        <div class="container">
+		
+            <!-- Left Side Content -->
+            <div class="left-side">
+			
+                <!-- Logo -->
+                <div id="logo">
+                   <!-- <a routerLink="/inicio" (click)="selecionar(1)"><img src="assets/images/logo.png" alt=""></a>-->
+                   <a routerLink="/inicio" ><img src="assets/images/logo.png" alt=""></a>
+                </div>
+                <!-- Mobile Navigation -->
+                <div class="mmenu-trigger" (click)="opened=!opened">
+                    <button class="hamburger hamburger--collapse" type="button">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
+                </div>
+                <!-- Main Navigation -->
+                <nav id="navigation" class="style-1">
+                    <ul id="responsive">
+                       <!-- <li><a [class]="inicio" (click)="selecionar(1)" routerLink="/">Inicio</a></li>
+                        <li><a [class]="contato" (click)="selecionar(2)" routerLink="/contato">Contato</a></li>
+                        <li><a [class]="anuncie" (click)="selecionar(3)" routerLink="/enviar-propriedade">Anuncie seu imóvel</a></li>-->
+                        <li><a [class]="inicio"    routerLink="/">Inicio</a></li>
+                        <li><a [class]="contato"   routerLink="/contato">Contato</a></li>
+                        <li><a [class]="anuncie"   routerLink="/enviar-propriedade">Anuncie seu imóvel</a></li>
+                    </ul>
+                </nav>
+                <div class="clearfix"></div>
+                <!-- Main Navigation / End -->
+				
+            </div>
+            <!-- Left Side Content / End -->
+
+            <!-- Right Side Content / End -->
+			<div class="lado-direito" style="position: relative; top: 10px;" *ngIf="login_view">
+				<!-- Header Widget -->
+				<div class="header-widget">
+                    <a (click)="logar()"    *ngIf="!visivelGlobal.visivel_logado" class="sign-in"><i class="fa fa-user"></i> Logar/Cadastrar </a>
+                    <a routerLink="/usuario/dados"  *ngIf="visivelGlobal.visivel_logado" class="sign-in"><i class="fa fa-user"></i> Perfil </a>
+				</div>
+				<!-- Header Widget / End -->
+			</div>
+        </div>
+    </div>
+    <!-- Header / End -->
+</header>
+<div class="clearfix"></div>
+<div [class]="espaco"></div>
+<!-- Header Container / End -->
+
+            <div style="background-color: white;"><router-outlet ></router-outlet></div>
+
+<!-- Footer
+================================================== -->
+<div id="footer" class="sticky-footer">
+	<!-- Main -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5 col-sm-6">
+				<img class="footer-logo" src="assets/images/logo.png" alt="">
+				<br><br>
+				<p>Aluguel simples e rápido. Agende visitas online, negocie o aluguel pelo computador ou telefone e assine o contrato online.</p>
+			</div>
+
+			<div class="col-md-4 col-sm-6 ">
+				<!--<h4>Helpful Links</h4>
+				<ul class="footer-links">
+					<li><a routerLink="#">Login</a></li>
+					<li><a routerLink="#">Sign Up</a></li>
+					<li><a routerLink="#">My Account</a></li>
+					<li><a routerLink="#">Add Property</a></li>
+					<li><a routerLink="#">Pricing</a></li>
+					<li><a routerLink="#">Privacy Policy</a></li>
+				</ul>
+
+                <div class="clearfix"></div>
+            -->
+			</div>		
+
+			<div class="col-md-3  col-sm-12">
+				<h4>Contato</h4>
+				<div class="text-widget">
+					<span>Av. Dr. Romeu Tórtima, 1400 - Barão Geraldo</span> <br>
+					Telefone: <span>(19) 98704-3904 </span><br>
+					E-Mail:<span>contato@myhomeimobiliaria.com</span><br>
+				</div>
+
+				<!--<ul class="social-icons margin-top-20">
+					<li><a class="facebook" routerLink="#"><i class="icon-facebook"></i></a></li>
+					<li><a class="twitter" routerLink="#"><i class="icon-twitter"></i></a></li>
+					<li><a class="gplus" routerLink="#"><i class="icon-gplus"></i></a></li>
+					<li><a class="vimeo" routerLink="#"><i class="icon-vimeo"></i></a></li>
+				</ul>-->
+
+			</div>
+
+		</div>
+		
+		<!-- Copyright -->
+		<div class="row">
+			<div class="col-md-12">
+				<div class="copyrights">© 2020 MyHome. Todos os direitos reservados.</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+<!-- Footer / End -->
+
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+    
+
+
+</div>
+

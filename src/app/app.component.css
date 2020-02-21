@@ -1,0 +1,31 @@
+.menu-mobile{
+    margin: 20px 0px 0px 0px;
+}
+
+.espaco1{
+    position: relative; 
+    height: 60px;
+}
+
+.espaco2{
+    position: relative; 
+    height: 160px;
+}
+
+.texto{
+    color: white;
+    font-size: 16px;
+}
+
+.lado-direito{
+    float: right;
+    width: 35%;
+    display: inline-block;
+
+}
+
+/*.confirmacao_assinatura{
+    height: 30px;
+    padding: 10px;
+    left: 10%
+}*/
