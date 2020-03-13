@@ -12,6 +12,7 @@ import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InicioComponent } from './templates/inicio/inicio.component';
+import { PesquisaComponent } from './templates/pesquisa/pesquisa.component';
 import { AssinarComponent } from './templates/assinar/assinar.component';
 
 
@@ -29,6 +30,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
   declarations: [
     AppComponent,
     InicioComponent,
+    PesquisaComponent,
     AssinarComponent,
   ],
   imports: [

@@ -1,0 +1,43 @@
+.block{
+
+    display: block;
+}
+
+.link0 {
+    position: absolute;
+    top: 0;
+    z-index: 9999;
+    left: 18%;
+    width: 100%;
+    display: block;
+    font-size: 13px;
+    padding: 0px;
+    overflow: hidden;
+    height: 250px;
+}
+
+.link1 {
+    position: absolute;
+    bottom: 0;
+    z-index: 9998;
+    left: 0;
+    width: 100%;
+    display: block;
+    font-size: 13px;
+    padding: 0px;
+    overflow: hidden;
+    height: 100px;
+}
+
+.link2 {
+    position: absolute;
+    top: 0;
+    z-index: 9998;
+    left: 0;
+    width: 100%;
+    display: block;
+    font-size: 13px;
+    padding: 0px;
+    overflow: hidden;
+    height: 100px;
+}
