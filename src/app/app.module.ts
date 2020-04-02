@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InicioComponent } from './templates/inicio/inicio.component';
 import { PesquisaComponent } from './templates/pesquisa/pesquisa.component';
+import { UnidadeComponent } from './templates/unidade/unidade.component';
 import { AssinarComponent } from './templates/assinar/assinar.component';
 
 
@@ -31,6 +32,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     AppComponent,
     InicioComponent,
     PesquisaComponent,
+    UnidadeComponent,
     AssinarComponent,
   ],
   imports: [

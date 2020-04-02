@@ -1,0 +1,17 @@
+.imagem_owl{
+    width: 100%;
+    height: 250px;
+}
+
+span.property-badge {
+	margin: 0;
+	padding: 4px 11px;
+	line-height: 24px;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 13px;
+	position: relative;
+	top: -4px;
+	margin-left: 4px;
+    background-color: #274abb;
+}
