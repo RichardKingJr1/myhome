@@ -1,0 +1,78 @@
+<ngx-spinner></ngx-spinner>
+<!-- Titlebar
+================================================== -->
+<div id="titlebar" class="submit-page" style="padding: 50px 0px; margin-bottom: 45px;">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2><i class="fa fa-plus-circle"></i> Adicionar Imovel </h2>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Content
+================================================== -->
+<div class="container" >
+<div class="row">
+
+	<!-- Submit Page -->
+	<div class="col-md-12">
+		<div class="submit-page">
+
+            <div class="notification notice large margin-bottom-55">
+                <h4>Você precisa entrar na sua conta myHome para cadastrar sua propriedade.</h4>
+                <p>Se você ainda não possui uma conta você pode se cadastrar clicando no botão abaixo ou enviar seus dados para nós entrarmos em contato e te auxiliarmos à anunciar sua propriedade.</p>
+            </div>
+            
+            <a class="button preview " (click)="logar()">Logar<i class="fa fa-arrow-circle-right"></i></a>
+            <a class="button preview " routerLink="/criar-conta">Criar Conta<i class="fa fa-arrow-circle-right"></i></a>
+
+			<div style="height: 40px;"></div>
+			
+
+		</div>
+		<!-- Section / End -->
+
+
+        <!-- Section -->
+		<h3 style="top: 15px;">Dados para contato</h3>
+		<div class="submit-section">
+
+			<!-- Row -->
+			<div class="row with-forms">
+
+				<!-- Name -->
+				<div class="col-md-4">
+					<h5>Nome</h5>
+					<input type="text" #nome>
+				</div>
+
+				<!-- Email -->
+				<div class="col-md-4">
+					<h5>EMail</h5>
+					<input type="text" #email>
+				</div>
+
+				<!-- Name -->
+				<div class="col-md-4">
+					<h5>Telefone</h5>
+					<input type="text" #telefone>
+				</div>
+
+			</div>
+            <!-- Row / End -->
+            
+            <a class="button preview  margin-top-15 " (click)="contato(nome.value, email.value, telefone.value)">Entrar em Contato<i class="fa fa-arrow-circle-right"></i></a>
+
+		</div>
+		<!-- Section / End -->
+
+	</div>
+
+</div>
+</div>
+
+
+
