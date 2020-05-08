@@ -13,6 +13,7 @@ import { Ng2ImgMaxModule } from 'ng2-img-max';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InicioComponent } from './templates/inicio/inicio.component';
+import { ContatoComponent } from './templates/contato/contato.component';
 import { PesquisaComponent } from './templates/pesquisa/pesquisa.component';
 import { UnidadeComponent } from './templates/unidade/unidade.component';
 import { AssinarComponent } from './templates/assinar/assinar.component';
@@ -33,6 +34,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
   declarations: [
     AppComponent,
     InicioComponent,
+    ContatoComponent,
     PesquisaComponent,
     UnidadeComponent,
     AssinarComponent,

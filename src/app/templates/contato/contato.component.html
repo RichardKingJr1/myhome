@@ -1,0 +1,83 @@
+<!-- Titlebar
+================================================== -->
+<div id="titlebar" class="submit-page" style="padding: 50px 0px; margin-bottom: 45px;">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2><i class="fa fa-plus-circle"></i> Contato  </h2>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Content
+================================================== -->
+
+<!-- Container / Start -->
+<div class="container" >
+
+	<div class="row" style="margin: 30px 0px 0px 0px">
+
+		<!-- Contact Details -->
+		<div class="col-md-4">
+
+			<h4 class="headline margin-bottom-30">Nos Encontre</h4>
+
+			<!-- Contact Details -->
+			<div class="sidebar-textbox">
+				<!--<p>Collaboratively administrate turnkey channels whereas virtual e-tailers. Objectively seize scalable metrics whereas proactive e-services.</p>-->
+
+				<ul class="contact-details">
+					<li><i class="im im-icon-Phone-2"></i> <strong>Telefone:</strong> <span>(19) 98704-3904 </span></li>
+					<li><i class="im im-icon-Globe"></i> <strong>Endereço</strong> <span>Av. Romeu Tortima, 1081</span></li>
+					<li><i class="im im-icon-Envelope"></i> <strong>E-Mail:</strong> <span>contato@myhomeimobiliaria.com</span></li>
+				</ul>
+			</div>
+
+		</div>
+
+		<!-- Contact Form -->
+		<div class="col-md-8">
+
+			<section id="contact">
+				<h4 class="headline margin-bottom-35">Formulário de Contato</h4>
+
+				<div id="contact-message"></div> 
+
+					<div class="row">
+						<div class="col-md-6">
+							<div>
+								<input #nome type="text" id="name" placeholder="Nome" required="required"/>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div>
+								<input #email type="email" id="email" placeholder="Email" pattern="^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$" required="required" />
+							</div>
+						</div>
+					</div>
+
+					<div>
+						<textarea #mensagem cols="40" rows="3" id="comments" placeholder="Mensagem" required="required"></textarea>
+					</div>
+
+					<button class="button" (click)="enviarMensagem(nome.value, email.value, mensagem.value)">Enviar Mensagem</button>
+					<div style="height: 25px;"></div>
+
+			</section>
+		</div>
+		<!-- Contact Form / End -->
+
+	</div>
+
+</div>
+<!-- Container / End -->
+
+
+<!-- Back To Top Button -->
+<div id="backtotop"><a href="#"></a></div>
+
+ <!-- Maps -->
+ <!--<script type="text/javascript" src="assets/scripts/infobox.min.js"></script>
+ <script type="text/javascript" src="assets/scripts/markerclusterer.js"></script>-->
+
