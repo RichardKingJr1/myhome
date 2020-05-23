@@ -1,0 +1,204 @@
+<ngx-spinner></ngx-spinner>
+<!-- Titlebar
+================================================== -->
+<div id="titlebar" class="submit-page" style="padding: 50px 0px; margin-bottom: 45px;">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2><i class="fa fa-plus-circle"></i> Criar Conta </h2>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Content
+================================================== -->
+<div class="container" >
+    <div class="row" *ngIf="!controle_view">
+
+        <!-- Submit Page -->
+        <div class="col-md-12">
+            <div class="submit-page">
+
+                <!-- Section -->
+                <h3>Dados de acesso</h3>
+                <div class="submit-section">
+
+                    <!-- Row -->
+                    <div class="row with-forms">
+                        <!-- Email -->
+                        <div class="col-md-4">
+                            <h5>Email</h5>
+                            <input type="text" #email>
+                        </div>
+                    </div>
+                    <!-- Row / End -->
+
+                    <!-- Row -->
+                    <div class="row with-forms">
+                        <!-- Senha -->
+                        <div class="col-md-4">
+                            <h5>Senha</h5>
+                            <input type="password" #senha>
+                        </div>
+                        
+                        <!-- Senha -->
+                        <div class="col-md-4">
+                            <h5>Confirmar Senha</h5>
+                            <input type="password" #csenha>
+                        </div>
+                    </div>
+                    <!-- Row / End -->
+                </div>
+                <!-- Section / End -->
+
+                <!-- Section -->
+                <h3>Dados de Pessoais</h3>
+                <div class="submit-section">
+                    <!-- Row -->
+                    <div class="row with-forms">
+                        <!-- Nome -->
+                        <div class="col-md-4">
+                            <h5>Nome</h5>
+                            <input type="text" #nome>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>Sobrenome</h5>
+                            <input type="text" #snome>
+                        </div>
+                    </div>
+                    <!-- Row / End -->
+
+                    <!-- Row -->
+                    <div class="row with-forms">
+                        <div class="col-md-4">
+                            <h5>RG</h5>
+                            <input type="text" #rg>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>CPF</h5>
+                            <input type="text" #cpf>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>Telefone</h5>
+                            <input type="text" #tel>
+                        </div>
+                    </div>
+                    <!-- Row / End -->
+
+                    <!-- Row -->
+                    <div class="row with-forms">
+                        <div class="col-md-4">
+                            <h5>Nacionalidade</h5>
+                            <input type="text" #nacionalidade>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>Estado Civíl</h5>
+                            <input type="text" #estado_civil>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>Profissão</h5>
+                            <input type="text" #profissao>
+                        </div>
+                    </div>
+                    <!-- Row / End -->
+
+                    <!-- Row -->
+                    <div class="row with-forms">
+                        <div class="col-md-4">
+                            <h5>CEP</h5>
+                            <input type="text" #cep>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>Endereço</h5>
+                            <input type="text" #endereco>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>Complemento</h5>
+                            <input type="text" #complemento>
+                        </div>
+                        
+                    </div>
+                    <!-- Row / End -->
+                </div>
+                <!-- Section / End -->
+
+                <!-- Section -->
+                <h3>Mídias</h3>
+                <div class="submit-section">
+
+                    <h5>RG ou CNH (Frente)</h5>
+                    <span style="overflow: auto; height: 130px; width: 99999px;"><img (click)="excluir(0)" [src]="img_url[0]" alt="" style="margin: 10px 5px; height: 120px;"></span>
+                    <input class="input_imagens" type="file" (change) = "selectFiles($event, 0)" accept="image/jpg" >
+
+                    <h5>RG ou CNH (Verso)</h5>
+                    <span style="overflow: auto; height: 130px; width: 99999px;"><img (click)="excluir(1)" [src]="img_url[1]" alt="" style="margin: 10px 5px; height: 120px;"></span>  
+                    <input class="input_imagens" type="file" (change) = "selectFiles($event, 1)" accept="image/jpg" >
+
+                    <h5>Foto mostrando o seu rosto e segurando o documento</h5>
+                    <span style="overflow: auto; height: 130px; width: 99999px;"><img (click)="excluir(2)" [src]="img_url[2]" alt="" style="margin: 10px 5px; height: 120px;"></span>          
+                    <input class="input_imagens" type="file" (change) = "selectFiles($event, 2)" accept="image/jpg">
+
+
+                </div>
+                <!-- Section / End -->
+
+                <!-- Section -->
+                <h3>Dados Bancários (necessario apenas se você for listar sua propriedade)</h3>
+                <div class="submit-section">
+
+                    <!-- Row -->
+                    <div class="row with-forms">
+                        <!-- Banco -->
+                        <div class="col-md-4">
+                            <h5>Banco</h5>
+                            <input type="text" #banco>
+                        </div>
+                        
+                        <!-- Agencia -->
+                        <div class="col-md-4">
+                            <h5>Agência</h5>
+                            <input type="text" #agencia>
+                        </div>
+                    </div>
+                    <!-- Row / End -->
+
+                    <!-- Row -->
+                    <div class="row with-forms">
+                        <!-- Email -->
+                        <div class="col-md-4">
+                            <h5>Conta Corrente</h5>
+                            <input type="text" #conta>
+                        </div>
+                    </div>
+                    <!-- Row / End -->
+                </div>
+                <!-- Section / End -->
+
+                <!--<a class="button preview margin-top-5" (click)="adicionarImovel()">Enviar<i class="fa fa-arrow-circle-right"></i></a>-->
+                <a class="button preview margin-top-15" (click)="criar(email.value, senha.value, csenha.value, nome.value, snome.value, rg.value, cpf.value, tel.value, profissao.value, nacionalidade.value, estado_civil.value, cep.value, endereco.value, complemento.value, banco.value, agencia.value, conta.value)">Enviar<i class="fa fa-arrow-circle-right"></i></a>
+
+                <div style="height: 40px;"></div>               
+
+            </div>
+            <!-- Section / End -->       
+            
+            
+        </div>
+    </div>
+     <!-- Submit Page -->
+    <div class="col-md-12" *ngIf="controle_view">
+        <div class="submit-page">
+            <h2>Enviamos um email para confirmação.</h2>
+            <h2>Assim que seu email for confirmado e os dados verificados sua conta estará habilitada realizar aluguel.</h2>
+
+            <a class="button preview margin-top-15" routerLink="/inicio">Voltar Inicio<i class="fa fa-arrow-circle-right"></i></a>
+
+            <div style="height: 40px;"></div>
+        </div>
+    </div>
+</div>
+
+
+

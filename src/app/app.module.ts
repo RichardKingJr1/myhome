@@ -28,6 +28,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { CriarContaComponent } from './templates/criar-conta/criar-conta.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     ContatoComponent,
     PesquisaComponent,
     UnidadeComponent,
+    CriarContaComponent,
     AssinarComponent,
     AddImovelDeslogadoComponent
   ],
