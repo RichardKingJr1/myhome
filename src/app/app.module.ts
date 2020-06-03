@@ -15,6 +15,7 @@ import { AppComponent } from './app.component';
 import { InicioComponent } from './templates/inicio/inicio.component';
 import { ContatoComponent } from './templates/contato/contato.component';
 import { PesquisaComponent } from './templates/pesquisa/pesquisa.component';
+import { LoginComponent } from './templates/login/login.component';
 import { UnidadeComponent } from './templates/unidade/unidade.component';
 import { AssinarComponent } from './templates/assinar/assinar.component';
 import { AddImovelDeslogadoComponent } from './templates/add-imovel-deslogado/add-imovel-deslogado.component';
@@ -37,6 +38,7 @@ import { CriarContaComponent } from './templates/criar-conta/criar-conta.compone
     InicioComponent,
     ContatoComponent,
     PesquisaComponent,
+    LoginComponent,
     UnidadeComponent,
     CriarContaComponent,
     AssinarComponent,

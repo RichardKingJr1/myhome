@@ -1,0 +1,68 @@
+<ngx-spinner></ngx-spinner>
+<!-- Titlebar
+================================================== -->
+<div id="titlebar" class="submit-page" style="padding: 50px 0px; margin-bottom: 45px;">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2><i class="fa fa-plus-circle"></i> Login </h2>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Content
+================================================== -->
+<div class="container" >
+<div class="row">
+
+	<!-- Submit Page -->
+	<div class="col-md-12">
+		<div class="submit-page">
+
+            <h3>Login</h3>
+
+            <!-- Row -->
+			<div class="row with-forms">
+				<!-- Name -->
+				<div class="col-md-4">
+					<h5>Email</h5>
+					<input type="text" #email>
+				</div>
+			</div>
+			<!-- Row / End -->
+
+			 <!-- Row -->
+			 <div class="row with-forms">
+				<!-- Name -->
+				<div class="col-md-4">
+					<h5>Senha</h5>
+					<input type="password" #senha>
+				</div>
+			</div>
+			<!-- Row / End -->
+
+			<div class="row with-forms margin-top-5" style="margin-left: 2px;">
+				<h3><a routerLink="/criar-conta">Criar Conta </a>/<a routerLink="/senha">Esqueci Senha</a></h3>				
+			</div>
+            
+            <!--<a class="button preview margin-top-5" (click)="adicionarImovel()">Enviar<i class="fa fa-arrow-circle-right"></i></a>-->
+            <a class="button preview margin-top-15" (click)="logar(email.value, senha.value)">Enviar<i class="fa fa-arrow-circle-right"></i></a>
+
+			<div style="height: 40px;"></div>
+			
+
+		</div>
+		<!-- Section / End -->
+
+
+		
+
+	</div>
+
+</div>
+</div>
+
+
+
