@@ -8,16 +8,20 @@ import { LoginComponent } from './templates/login/login.component';
 import { UnidadeComponent } from './templates/unidade/unidade.component';
 import { AddImovelDeslogadoComponent } from './templates/add-imovel-deslogado/add-imovel-deslogado.component';
 import { CriarContaComponent } from './templates/criar-conta/criar-conta.component';
+import { SenhaComponent } from './templates/senha/senha.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/inicio', pathMatch: 'full'},
   { path: 'inicio', component: InicioComponent},
   { path: 'contato', component: ContatoComponent},
+  //{ path: 'enviar-propriedade', component: AddImovelComponent},
   { path: 'add-imovel-deslogado', component: AddImovelDeslogadoComponent},
   { path: 'pesquisa/:endereco/:lat/:lon/:alugar/:min_area/:max_area/:min_preco/:max_preco/:quartos/:banheiros/:tipo', component: PesquisaComponent},
   { path: 'unidade/:id/:long/:lat/:preco', component: UnidadeComponent},
+
   { path: 'login', component: LoginComponent},
   { path: 'criar-conta', component: CriarContaComponent},
+  { path: 'senha', component: SenhaComponent},
   { path: "**", component: LoginComponent}
 ];
 

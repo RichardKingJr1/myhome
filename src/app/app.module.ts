@@ -30,6 +30,7 @@ import { MatRadioModule } from '@angular/material/radio';
 
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { CriarContaComponent } from './templates/criar-conta/criar-conta.component';
+import { SenhaComponent } from './templates/senha/senha.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { CriarContaComponent } from './templates/criar-conta/criar-conta.compone
     LoginComponent,
     UnidadeComponent,
     CriarContaComponent,
+    SenhaComponent,
     AssinarComponent,
     AddImovelDeslogadoComponent
   ],

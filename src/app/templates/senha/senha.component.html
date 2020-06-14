@@ -1,0 +1,55 @@
+<ngx-spinner></ngx-spinner>
+<!-- Titlebar
+================================================== -->
+<div id="titlebar" class="submit-page" style="padding: 50px 0px; margin-bottom: 45px;">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2><i class="fa fa-plus-circle"></i> Esqueci Senha  </h2>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Content
+================================================== -->
+<div class="container" >
+	<div class="row" *ngIf='ctrl_template'>
+
+		<!-- Submit Page -->
+		<div class="col-md-12">
+			<div class="submit-page">
+
+				<!-- Row -->
+				<div class="row with-forms">
+					<!-- Name -->
+					<div class="col-md-8">
+						<h5>Email</h5>
+						<input type="text" #email>
+					</div>
+				</div>
+				<!-- Row / End -->
+				
+				<!--<a class="button preview margin-top-5" (click)="adicionarImovel()">Enviar<i class="fa fa-arrow-circle-right"></i></a>-->
+				<a class="button preview margin-top-15" (click)="senha(email.value)">Recuperar Senha<i class="fa fa-arrow-circle-right"></i></a>
+
+				<div style="height: 40px;"></div>	
+			</div>
+			<!-- Section / End -->	
+		</div>
+	</div>
+
+	<div class="row" *ngIf='!ctrl_template'>
+		<div class="submit-page">
+            <h2>Enviamos um email com nova senha.</h2>
+
+            <a class="button preview margin-top-15" routerLink="/login">Voltar Login<i class="fa fa-arrow-circle-right"></i></a>
+
+            <div style="height: 40px;"></div>
+        </div>
+	</div>
+</div>
+
+
+
