@@ -32,6 +32,9 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { CriarContaComponent } from './templates/criar-conta/criar-conta.component';
 import { SenhaComponent } from './templates/senha/senha.component';
 
+import { AddGuardGuard } from './siblings/add-guard.guard';
+
+
 
 @NgModule({
   declarations: [
@@ -61,7 +64,7 @@ import { SenhaComponent } from './templates/senha/senha.component';
     GooglePlaceModule,
     Ng2ImgMaxModule
   ],
-  providers: [GlobalService ,InicioService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [GlobalService ,InicioService, {provide: LocationStrategy, useClass: HashLocationStrategy}, AddGuardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -10,6 +10,9 @@ import { AddImovelDeslogadoComponent } from './templates/add-imovel-deslogado/ad
 import { CriarContaComponent } from './templates/criar-conta/criar-conta.component';
 import { SenhaComponent } from './templates/senha/senha.component';
 
+import { AddGuardGuard } from './siblings/add-guard.guard';
+
+
 const routes: Routes = [
   { path: '', redirectTo: '/inicio', pathMatch: 'full'},
   { path: 'inicio', component: InicioComponent},
