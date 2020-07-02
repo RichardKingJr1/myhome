@@ -1,0 +1,506 @@
+<ngx-spinner></ngx-spinner>
+<!-- Titlebar
+================================================== -->
+<div id="titlebar" class="submit-page" style="padding: 50px 0px; margin-bottom: 45px;">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2><i class="fa fa-plus-circle"></i> Adicionar Imóvel  </h2>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Content
+================================================== -->
+<div class="container">
+<div class="row">
+
+	<!-- Submit Page -->
+	<div class="col-md-12">
+		<div class="submit-page">
+
+
+		<!-- Section -->
+		<h3>Dados do imóvel</h3>
+		<div class="submit-section">
+
+
+			<!-- Row -->
+			<div class="row with-forms">
+
+				<!-- Status -->
+				<!--<div class="col-md-6">
+					<h5>Status</h5>
+					<select class="chosen-select-no-single" #status>
+						<option label="blank"></option>	
+						<option value="1">Alugar</option>
+						<option value="0">Vender</option>
+					</select>
+				</div>-->
+
+				<!-- Type -->
+				<div class="col-md-4">
+					<h5>Tipo de imóvel</h5>
+					<select class="chosen-select-no-single" #tipo >
+						<option label="blank"></option>		
+						<option value="1">Apartamento</option>
+						<option value="2">Casa</option>
+						<option value="3">Kitnet</option>
+						<option value="4">Pensionato</option>
+					</select>
+				</div>
+
+				<!-- Area -->
+				<div class="col-md-4">
+					<h5>Área</h5>
+					<div class="select-input disabled-first-option">
+						<input type="text" data-unit="m²" #area>
+					</div>
+				</div>
+
+				<!-- Rooms -->			
+				<div class="col-md-4">
+					<h5>Cômodos</h5>
+					<select class="chosen-select-no-single" #comodos>
+						<option label="blank"></option>	
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">More than 5</option>
+					</select>
+				</div>
+
+			</div>
+			<!-- Row / End -->
+
+
+			<!-- Row -->
+			<div class="row with-forms">
+
+				<!-- Price -->
+				<!--<div class="col-md-4">
+					<h5>Preço </h5>
+					<div class="select-input disabled-first-option">
+						<input type="text" data-unit="R$" #preco>
+					</div>
+				</div>-->
+
+				<div class="col-md-4">
+					<h5>Aluguel </h5>
+					<div class="select-input disabled-first-option">
+						<input type="text" data-unit="R$" #aluguel>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<h5>Conodomínio </h5>
+					<div class="select-input disabled-first-option">
+						<input type="text" data-unit="R$" #condominio>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<h5>IPTU </h5>
+					<div class="select-input disabled-first-option">
+						<input type="text" data-unit="R$" #iptu>
+					</div>
+				</div>
+
+			</div>
+			<!-- Row / End -->
+
+		</div>
+		<!-- Section / End -->
+
+
+		<!-- Section -->
+		<!--<h3>Gallery</h3>
+		<div class="submit-section">
+			<form action="/file-upload" class="dropzone" ></form>
+		</div>-->
+		<h3>Mídias</h3>
+		<div class="submit-section">
+
+			<h5>Fotos</h5>
+			<span style="overflow: auto; height: 130px; width: 99999px;"><img (click)="excluir1(i)" *ngFor="let url of urls; let i = index" [src]="url" alt="" style="margin: 10px 5px; height: 120px;"></span>
+			
+			<input class="input_imagens" type="file" (change) = "selectFiles($event)" multiple=""  accept="image/jpg">
+
+			<!--<h5>Planta</h5>
+			<span  style="overflow: auto; height: 130px; width: 99999px;"><img (click)="excluir2(c)" *ngFor="let fp of fps; let c = index" [src]="fp" alt="" style="margin: 10px 5px; height: 120px;"></span>
+			
+			<input  class="input_imagens" type="file" (change) = "selectPlantas($event)" multiple="" >-->
+
+			<!-- Row -->
+			<!--<div class="row with-forms">-->
+				<!-- Video -->
+				<!--<div class="col-md-6">
+					<h5>Video</h5>
+					<h6>Envie o url de um video no youtube</h6>
+					<input type="text" #video>
+				</div>
+			</div>-->
+
+		</div>
+		
+		<!-- Section / End -->
+
+
+		<!-- Section -->
+		<h3>Localização</h3>
+		<div class="submit-section">
+			
+			<div class="row with-forms">
+				<!-- Zip-Code -->
+				<div class="col-md-6">
+					<h5>CEP</h5>
+					<input type="text" (blur)="buscarCep(cep.value, endereco.value)" #cep>
+				</div> 
+
+				<!-- Address -->
+				<div class="col-md-6">
+					<h5>Endereço</h5>
+					<input type="text" (blur)="buscarCep(cep.value, endereco.value)" #endereco>
+				</div>
+
+				<!-- Numero -->
+				<div class="col-md-6">
+					<h5>Numero</h5>
+					<input type="text" #numero>
+				</div>
+
+				<!-- Complemento -->
+				<div class="col-md-6">
+					<h5>Complemento</h5>
+					<input type="text" #complemento>
+				</div>
+			</div>
+			<!-- Row / End -->
+			
+			<div class="row with-forms" *ngIf="estado">
+				<!-- Estado -->
+				<div class="col-md-6">
+					<h4>Estado: {{estado}}</h4>
+				</div>
+			</div>
+
+			<div class="row with-forms" *ngIf="cidade">
+				<!-- Cidade -->
+				<div class="col-md-6">
+					<h4>Cidade: {{cidade}}</h4>
+				</div>
+			</div>
+
+			<div class="row with-forms" *ngIf="bairro">
+				<!-- Estado -->
+				<div class="col-md-6">
+					<h4>Bairro: {{bairro}}</h4>
+				</div>
+			</div>
+
+		</div>
+		<!-- Section / End -->
+
+
+		<!-- Section -->
+		<h3>Detalhes do imóvel</h3>
+		<div class="submit-section">
+
+			<!-- Description -->
+			<div class="form">
+				<h5>Descrição</h5>
+				<textarea class="WYSIWYG" name="summary" cols="40" rows="3" id="summary" #descricao></textarea>
+			</div>
+
+			<!-- Row -->
+			<div class="row with-forms">
+
+				<!-- Beds -->
+				<div class="col-md-4">
+					<h5>Quartos <span>(optional)</span></h5>
+					<select class="chosen-select-no-single" #quartos>
+						<option label="blank"></option>	
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+					</select>
+				</div>
+
+				<!-- Baths -->
+				<div class="col-md-4">
+					<h5>Banheiros <span>(optional)</span></h5>
+					<select class="chosen-select-no-single" #banheiros	>
+						<option label="blank"></option>	
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+					</select>
+				</div>
+
+			</div>
+			<!-- Row / End -->
+
+
+			<!-- Checkboxes -->
+			<h5 class="margin-top-30">Itens do Imóvel <span>(opcional)</span></h5>
+			<div class="checkboxes in-row margin-bottom-20">
+
+				<mat-checkbox class="checkbox" #arcondicionado>Ar condicionado</mat-checkbox>
+
+				<mat-checkbox class="checkbox" #banheira>Banheira</mat-checkbox>
+		
+				<mat-checkbox class="checkbox" #chuveirogas>Chuveiro a gás</mat-checkbox>
+
+				<mat-checkbox class="checkbox" #chuveiroeletrico>Chuveiro Elétrico</mat-checkbox>
+			
+				<mat-checkbox class="checkbox" #cortina>Cortina</mat-checkbox>
+			
+				<mat-checkbox class="checkbox" #piscinaprivada>Piscina privada</mat-checkbox>
+					
+				<mat-checkbox class="checkbox" #varanda>Varanda</mat-checkbox>
+			
+				<mat-checkbox class="checkbox" #ventilador>Ventilador</mat-checkbox>
+			
+				
+			
+				
+			</div>
+			<!-- Checkboxes / End -->
+
+			<!-- Checkboxes -->
+			<h5 class="margin-top-30">Itens do Condomínio <span>(opcional)</span></h5>
+			<div class="checkboxes in-row margin-bottom-20">
+				<mat-checkbox class="checkbox" #academia>Academia</mat-checkbox>
+
+				<mat-checkbox class="checkbox" #pet>Aceita Pet</mat-checkbox>
+			
+				<mat-checkbox class="checkbox" #lazer>Área de Lazer</mat-checkbox>
+			
+				<mat-checkbox class="checkbox" #churrasqueira>Churrasqueira</mat-checkbox>
+			
+				<mat-checkbox class="checkbox" #elevador>Elevador</mat-checkbox>
+
+				<mat-checkbox class="checkbox" #internet>Internet</mat-checkbox>
+			
+				<mat-checkbox class="checkbox" #lavanderia>Lavanderia</mat-checkbox>
+			
+				<mat-checkbox class="checkbox" #piscina>Piscina</mat-checkbox>
+			
+				<mat-checkbox class="checkbox" #portaria>Portaria</mat-checkbox>
+			
+				<mat-checkbox class="checkbox" #salao>Salão de festas</mat-checkbox>
+			
+				<mat-checkbox class="checkbox" #sauna>Sauna</mat-checkbox>
+
+			</div>
+
+			<!-- Checkboxes -->
+			<h5 class="margin-top-30">Móveis  <span>(opcional)</span></h5>
+			<div class="checkboxes in-row margin-bottom-20">
+				<mat-checkbox class="checkbox" #armariocozinha>Armário na cozinha</mat-checkbox>
+			
+				<mat-checkbox class="checkbox" #armarioquarto>Armário no quarto</mat-checkbox>
+			
+				<mat-checkbox class="checkbox" #armariobanheiro>Armário no banheiro</mat-checkbox>
+			
+				<mat-checkbox class="checkbox" #camacasal>Cama de casal</mat-checkbox>
+			
+				<mat-checkbox class="checkbox"  #camasolteiro>Cama de solteiro</mat-checkbox>
+			
+				<mat-checkbox class="checkbox" #espelho>Espelho no Banheiro</mat-checkbox>
+			
+				<mat-checkbox class="checkbox" #mesa>Mesa e cadeiras</mat-checkbox>
+			
+				<mat-checkbox class="checkbox" #sofa>Sofá</mat-checkbox>
+				
+				<mat-checkbox class="checkbox" #televisao>Televisao</mat-checkbox>
+				
+				<mat-checkbox class="checkbox" #utensilio>Utensílios de cozinha</mat-checkbox>
+
+				<mat-checkbox class="checkbox" #fogao>Fogão</mat-checkbox>
+			
+				<mat-checkbox class="checkbox" #geladeira>Geladeira</mat-checkbox>
+			
+				<mat-checkbox class="checkbox" #microondas>Microondas</mat-checkbox>
+			
+				<mat-checkbox class="checkbox" #maquinalavar>Máquina de Lavar</mat-checkbox>
+			</div>
+			<!-- Checkboxes / End -->
+
+			<!-- Checkboxes -->
+			<h5 class="margin-top-30">Contas inclusas no aluguel/condomínio </h5>
+			<div class="checkboxes in-row margin-bottom-20">
+				<mat-checkbox class="checkbox" #agua>Água</mat-checkbox>
+			
+				<mat-checkbox class="checkbox" #luz>Luz</mat-checkbox>
+
+				<mat-checkbox class="checkbox" #gas>Gás</mat-checkbox>
+			</div>
+			<!-- Checkboxes / End -->
+
+			<!-- Checkboxes -->
+			<h5 class="margin-top-30">Opções de contrato  </h5>
+			<div class="checkboxes in-row margin-bottom-20">
+				<mat-checkbox class="checkbox" #sgarantia>Sem garantia</mat-checkbox>
+			
+				<mat-checkbox class="checkbox" #fiador>Fiador</mat-checkbox>
+			
+				<mat-checkbox class="checkbox" #caucao>Cheque caução</mat-checkbox>
+			
+			</div>
+			<!-- Checkboxes / End -->
+
+		</div>
+		<!-- Section / End -->
+
+		<!-- Section -->
+		<h3>Vaga de Garagem</h3>
+		<div class="submit-section">
+
+			<!-- Checkboxes -->
+			<div class="checkboxes in-row margin-bottom-20">
+				<mat-radio-group [(ngModel)]="garagem">
+					<mat-radio-button class="checkbox" value="0" >Sem garegem</mat-radio-button>					
+					<mat-radio-button class="checkbox" value="1" >Garagem inclusa</mat-radio-button>					
+					<mat-radio-button class="checkbox" value="2" >Garagem a parte</mat-radio-button>
+				</mat-radio-group>
+			</div>
+
+
+
+			<!-- Row -->
+			<div class="row with-forms" [hidden]="garagem != 1" >
+
+				<!--numero de vagas-->
+				<div class="col-md-4">
+					<h5>Numero de Vagas</h5>
+					<input type="text" #garagem_inclusa>
+				</div> 
+
+
+			</div>
+			<!-- Row / End -->
+
+			<!-- Row -->
+			<div class="row with-forms" [hidden]="garagem != 2">
+
+				<!--numero de vagas disponiveis-->
+				<div class="col-md-4">
+					<h5>Numero de Vagas Disponíveis</h5>
+					<input type="text"  #garagem_a_parte>
+				</div>
+
+				<!--Preço de cada vaga-->
+				<div class="col-md-4">
+					<h5>Preço de cada vaga</h5>
+					<input type="text"  #garagem_preco>
+				</div>
+
+			</div>
+			<!-- Row / End -->
+
+		</div>
+		<!-- Section / End -->
+
+		<!-- Section -->
+		<h3>Numero de Moradores</h3>
+		<div class="submit-section">
+
+			<!-- Checkboxes -->
+			<p>Numero de moradores aumenta o rateio?</p>
+			<div class="checkboxes in-row margin-bottom-20">
+				<mat-radio-group [(ngModel)]="moradores">
+					<mat-radio-button class="checkbox" value="0" >Não</mat-radio-button>					
+					<mat-radio-button class="checkbox" value="1" >Sim</mat-radio-button>					
+				</mat-radio-group>
+			</div>
+
+			<!-- Row -->
+			<div class="row with-forms" >
+
+				<!--Preço por morador-->
+				<div class="col-md-4">
+					<h5>Numero máximo de moradores</h5>
+					<input type="text" #numero_moradores>
+				</div>
+
+				<!--Preço por morador-->
+				<div class="col-md-4" [hidden]="moradores != 1">
+					<h5>Preço por morador</h5>
+					<input type="text" #moradores_preco>
+				</div>
+
+
+			</div>
+			<!-- Row / End -->
+
+
+		</div>
+		<!-- Section / End -->
+
+		<!-- Section -->
+		<h3>Processo de desocupação</h3>
+		<div class="submit-section">
+
+			<!-- Checkboxes -->
+			<p>Desocupação antes de 30 mêses?</p>
+			<div class="checkboxes in-row margin-bottom-20">
+				<mat-radio-group [(ngModel)]="janela_desocpuacao">
+					<mat-radio-button class="checkbox" value="2" >Saída depois de 12 mêses</mat-radio-button>
+					<mat-radio-button class="checkbox" value="1" >Janela em mês específico</mat-radio-button>
+					<mat-radio-button class="checkbox" value="0" >Não</mat-radio-button>										
+				</mat-radio-group>
+			</div>
+
+			<!-- Row -->
+			<div class="row with-forms" [hidden]="janela_desocpuacao != 1">
+
+				<!--Preço por morador-->
+				<div class="col-md-4" >
+					<h5>Mês da Janela</h5>
+					<input type="text" #mes_janela>
+				</div>
+
+			</div>
+			<!-- Row / End -->
+
+			<p>Taxa de saída</p>
+			<div class="checkboxes in-row margin-bottom-20">
+				<mat-radio-group [(ngModel)]="taxa_desocpuacao">
+					<mat-radio-button class="checkbox" value="0" >Será cobrado apenas a limpeza e pintura do imóvel</mat-radio-button>
+					<mat-radio-button class="checkbox" value="1" ><div style="position: relative; width: 100%; overflow: hidden;">Será cobrada apenas uma taxa de saída</div></mat-radio-button>									
+				</mat-radio-group>
+			</div>
+
+			<!-- Row -->
+			<div class="row with-forms" [hidden]="taxa_desocpuacao != 1">
+
+				<!--Preço por morador-->
+				<div class="col-md-4" >
+					<h5>Valor Taxa</h5>
+					<input type="text" #valor_taxa>
+				</div>
+
+			</div>
+			<!-- Row / End -->
+
+		</div>
+		<!-- Section / End -->
+
+		<div class="divider"></div>
+		<div ><a class="button preview margin-top-5 margin-bottom-20"  (click)="adicionarImovel(aluguel.value, condominio.value, iptu.value, tipo.value, area.value, comodos.value, cep.value, endereco.value, numero.value, complemento.value, descricao.value, quartos.value, banheiros.value, arcondicionado._checked, banheira._checked, chuveirogas._checked, chuveiroeletrico._checked, cortina._checked, piscinaprivada._checked, varanda._checked, ventilador._checked, academia._checked, lazer._checked, churrasqueira._checked, elevador._checked, lavanderia._checked, piscina._checked, portaria._checked, salao._checked, sauna._checked, armariocozinha._checked, armarioquarto._checked, armariobanheiro._checked, camacasal._checked, camasolteiro._checked, espelho._checked, mesa._checked, sofa._checked, televisao._checked, utensilio._checked, fogao._checked, geladeira._checked, microondas._checked, maquinalavar._checked, pet.checked, internet.checked, agua.checked, luz.checked, gas.checked, sgarantia.checked, fiador.checked, caucao.checked, garagem_inclusa.value, garagem_a_parte.value, garagem_preco.value, moradores_preco.value, numero_moradores.value, mes_janela.value, valor_taxa.value)">Enviar<i class="fa fa-arrow-circle-right"></i></a></div>
+		
+	</div>
+
+</div>
+</div>
+
+
+
