@@ -18,6 +18,7 @@ import { PesquisaComponent } from './templates/pesquisa/pesquisa.component';
 import { LoginComponent } from './templates/login/login.component';
 import { UnidadeComponent } from './templates/unidade/unidade.component';
 import { AddImovelComponent } from './templates/add-imovel/add-imovel.component';
+import { VisitarComponent } from './templates/visitar/visitar.component';
 import { AssinarComponent } from './templates/assinar/assinar.component';
 import { AddImovelDeslogadoComponent } from './templates/add-imovel-deslogado/add-imovel-deslogado.component';
 
@@ -47,6 +48,7 @@ import { AddGuardGuard } from './siblings/add-guard.guard';
     LoginComponent,
     UnidadeComponent,
     AddImovelComponent,
+    VisitarComponent,
     CriarContaComponent,
     SenhaComponent,
     AssinarComponent,

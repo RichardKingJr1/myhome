@@ -1,0 +1,91 @@
+<ngx-spinner></ngx-spinner>
+<!-- Titlebar
+================================================== -->
+<div id="titlebar" class="submit-page" style="padding: 50px 0px; margin-bottom: 45px;">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2><i class="fa fa-plus-circle"></i> Agendar Visita  </h2>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Content
+================================================== -->
+<div class="container" >
+	<div class="row" *ngIf="!ctrl_template">
+
+		<!-- Submit Page -->
+		<div class="col-md-12">
+			<div class="submit-page">
+
+			
+				<!-- Checkboxes -->
+				<h5>Escolha o dia </h5>
+				<div class="checkboxes in-row margin-bottom-20">
+
+					<mat-radio-button  class="checkbox" name="dia" (change)="buscarDia(0)" checked>Dia {{dia_dom[0]}}</mat-radio-button>
+					<mat-radio-button  class="checkbox" name="dia" (change)="buscarDia(1)">Dia {{dia_dom[1]}}</mat-radio-button>	
+					<mat-radio-button  class="checkbox" name="dia" (change)="buscarDia(2)">Dia {{dia_dom[2]}}</mat-radio-button>
+					<mat-radio-button  class="checkbox" name="dia" (change)="buscarDia(3)">Dia {{dia_dom[3]}}</mat-radio-button>
+					<mat-radio-button  class="checkbox" name="dia" (change)="buscarDia(4)">Dia {{dia_dom[4]}}</mat-radio-button>
+					<mat-radio-button  class="checkbox" name="dia" (change)="buscarDia(5)">Dia {{dia_dom[5]}}</mat-radio-button>
+					
+				</div>
+
+				
+				<h5 class="margin-top-30">Escolha a hora </h5>
+				<div class="checkboxes in-row margin-bottom-30">
+					<mat-radio-button class="checkbox" name="hora" *ngFor="let horario of horarios_final" (click)="buscarHora(horario)">{{horario}}:00</mat-radio-button>	
+					<h4 *ngIf="horarios_final == false">Sem horários disponíveis nesse dia</h4>		
+				</div>
+
+				<!-- Row -->
+				<div class="row with-forms">
+
+					<!-- Name -->
+					<div class="col-md-4">
+						<h5>Nome</h5>
+						<input type="text" #nome>
+					</div>
+
+					<!-- Email -->
+					<div class="col-md-4">
+						<h5>Email</h5>
+						<input type="text" #email>
+					</div>
+
+					<!-- Name -->
+					<div class="col-md-4">
+						<h5>Telefone <span>(optional)</span></h5>
+						<input type="text" #telefone>
+					</div>
+
+				</div>
+				<!-- Row / End -->
+				
+				<!--<a class="button preview margin-top-5" (click)="adicionarImovel()">Enviar<i class="fa fa-arrow-circle-right"></i></a>-->
+				<a class="button preview margin-top-15" (click)="enviarVisita(nome.value, email.value, telefone.value)">Enviar<i class="fa fa-arrow-circle-right"></i></a>
+
+				<div style="height: 20px;"></div>
+
+			</div>
+			<!-- Section / End -->
+		</div>
+	</div>
+
+	<div class="row" *ngIf="ctrl_template">
+		<div class="submit-page">
+            <h2>Visita agendada, enviaremos uma confirmação por whatsapp e email.</h2>
+
+            <a class="button preview margin-top-15" routerLink="/inicio">Voltar Inicio<i class="fa fa-arrow-circle-right"></i></a>
+
+            <div style="height: 40px;"></div>
+        </div>
+	</div>
+</div>
+
+
+
