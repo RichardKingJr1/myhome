@@ -9,6 +9,7 @@ import { UnidadeComponent } from './templates/unidade/unidade.component';
 import { AddImovelComponent } from './templates/add-imovel/add-imovel.component';
 import { AddImovelDeslogadoComponent } from './templates/add-imovel-deslogado/add-imovel-deslogado.component';
 import { VisitarComponent } from './templates/visitar/visitar.component';
+import { AlugarComponent } from './templates/alugar/alugar.component';
 import { CriarContaComponent } from './templates/criar-conta/criar-conta.component';
 import { SenhaComponent } from './templates/senha/senha.component';
 
@@ -37,6 +38,8 @@ const routes: Routes = [
   { path: 'pesquisa/:endereco/:lat/:lon/:alugar/:min_area/:max_area/:min_preco/:max_preco/:quartos/:banheiros/:tipo', component: PesquisaComponent},
   { path: 'unidade/:id/:long/:lat/:preco', component: UnidadeComponent},
   { path: 'visitar/:id', component: VisitarComponent},
+  { path: 'alugar', canActivate: [AuthGuard], component: AlugarComponent},
+  { path: 'alugar', component: AlugarComponent},
   { path: 'login', component: LoginComponent},
   { path: 'criar-conta', component: CriarContaComponent},
   { path: 'senha', component: SenhaComponent},

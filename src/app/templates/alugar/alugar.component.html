@@ -1,0 +1,197 @@
+<ngx-spinner></ngx-spinner>
+<!-- Titlebar
+================================================== -->
+<div id="titlebar" class="submit-page" style="padding: 50px 0px; margin-bottom: 45px;">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2><i class="fa fa-plus-circle"></i> Alugar  </h2>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Content
+================================================== -->
+<div class="container" >
+	<div class="row" *ngIf="controle_view">
+
+		<!-- Submit Page -->
+		<div class="col-md-12">
+			<div class="submit-page">
+
+				<!-- Row -->
+				<div class="row with-forms">
+
+					<div class="col-md-8 margin-top-15">
+						<h2>Formulário Solicitação de aluguel</h2> <br>
+
+						<h3>Imóvel: {{imovel.endereco}}, {{imovel.cep}}</h3>
+
+						<p>Nome: {{usuario.nome}} {{usuario.sobrenome}}</p>
+						<p>Email: {{usuario.email}}</p>
+						<p>Telefone: {{usuario.telefone}}</p>
+						<p>RG: {{usuario.rg}}</p>
+						<p>CPF: {{usuario.cpf}}</p>
+						<p>Nacionalidade: {{usuario.nacionalidade}}</p>
+						<p>Estado Civil: {{usuario.estado_civil}}</p>
+						<p>Profissão: {{usuario.profissao}}</p>
+					</div>
+
+				</div>
+				<!-- Row / End -->
+
+				<!--Data de entrada-->
+				<!-- Row -->
+				<div class="row with-forms">
+					<!-- Checkboxes -->
+					<h4 class="margin-top-30">Opções de contrato</h4>
+					<div class="checkboxes in-row margin-bottom-20">
+						<mat-radio-group [(ngModel)]="entrada">
+							<mat-radio-button class="checkbox" value="0" checked>Assim que possivel</mat-radio-button>					
+							<mat-radio-button class="checkbox" value="1" >Data futura</mat-radio-button>					
+						</mat-radio-group>
+					</div>
+				</div>
+
+				<!-- Row -->
+				<div class="row with-forms" [hidden]="entrada != 1" style="position: relative; left: -10px;">
+					<!-- Cupos desconto -->
+					<p style="padding: 0px 15px;">É permitido solicitar uma data de entrada até 30 dias no futuro</p>
+					<div class="col-md-4 margin-top-15">
+						<h5>Data de entrada</h5>
+						<input type="date" [max]="dataMaxima" [min]="dataMinima"  #data_entrada>
+					</div>
+				</div>
+				<!-- Row / End -->
+
+				<!-- Row -->
+				<div class="row with-forms" style="position: relative; left: -10px;">
+					<!-- Cupos desconto -->
+					<div class="col-md-4 margin-top-15">
+						<h5>Cupom de Desconto</h5>
+						<input type="text" (change)="mudarDesconto(desconto.value)" #desconto>
+					</div>
+				</div>
+				<!-- Row / End -->
+
+				<!-- Row -->
+				<div class="row with-forms">
+					<!-- Checkboxes -->
+					<h4 class="margin-top-30">Opções de contrato</h4>
+					<div class="checkboxes in-row margin-bottom-60">
+						<mat-radio-group [(ngModel)]="garantia">
+							<mat-radio-button *ngIf="imovel.sgarantia == 1" class="checkbox" value="0" >Sem garantia</mat-radio-button>					
+							<mat-radio-button *ngIf="imovel.fiador == 1" class="checkbox" value="1" >Fiador</mat-radio-button>					
+							<!--<mat-radio-button *ngIf="true" class="checkbox" value="2" >Antecipado</mat-radio-button>-->
+							<mat-radio-button *ngIf="imovel.caucao == 1" class="checkbox" value="3" >Cheque caução</mat-radio-button>
+						</mat-radio-group>
+					</div>
+				</div>
+
+				<div [hidden]="garantia != 1">
+					<!-- Row -->
+					<div class="row with-forms" >
+						<!--numero de vagas-->
+						<div class="col-md-6">
+							<h5>Email Fiador (O fiador deve ter uma conta no MyHome com esse email registrado)</h5>
+							<input type="text" #email_fiador >
+						</div>
+	
+					</div>
+					<!-- Row / End -->
+	
+					<!-- Row -->
+					<div class="row with-forms" >
+						<div class="col-md-12">
+							<h5>Certidão do imovel dado como garantia</h5>
+							<span style="overflow: auto; height: 130px; width: 99999px;"><img (click)="excluir(0)" [src]="img_url[0]" alt="" style="margin: 10px 5px; height: 120px;"></span>
+							<input class="input_imagens" type="file" (change)="selectFiles_1($event, 0)" >
+						</div>
+						<div class="col-md-12">
+							<h5>Foto da certidão do lado do documento do fiador</h5>
+							<span style="overflow: auto; height: 130px; width: 99999px;"><img (click)="excluir(1)" [src]="img_url[1]" alt="" style="margin: 10px 5px; height: 120px;"></span>
+							<input class="input_imagens" type="file" (change)="selectFiles_1($event, 1)" >
+						</div>
+					</div>
+					<!-- Row / End -->
+				</div>
+				
+
+				<!-- Row -->
+				<div class="row with-forms margin-top-15">
+				
+					<h3>Comprovante de Renda</h3>
+					<div class="submit-section">
+
+						<h4>É solicitado comprovar renda 3x maior que o aluguel</h4>
+						<h5>Fotos</h5>
+						<span style="overflow: auto; height: 130px; width: 99999px;"><img (click)="excluir1(i)" *ngFor="let url of urls; let i = index" [src]="url" alt="" style="margin: 10px 5px; height: 120px;"></span>
+						
+						<input class="input_imagens" type="file" (change)="selectFiles($event)" multiple="" >
+					</div>
+
+				</div>
+				<!-- Row / End -->
+
+				<!-- Row -->
+				<div class="row with-forms margin-top-10" >
+				
+					<h3>Garagem</h3>
+					<div class="submit-section" style="top: 30px !important;">
+
+						<h4 *ngIf="imovel.tipo_garagem != 1 && imovel.tipo_garagem != 2">Não são disponibilizadas vagas de garamgem.</h4><br>
+						<h4 *ngIf="imovel.tipo_garagem == 1">São disponibilizadas {{imovel.n_vagas}} vagas.</h4><br>
+						<h4 *ngIf="imovel.tipo_garagem == 2">As vagas são alugadas aparte. Existem {{imovel.n_vagas}}  vagas disponiveis. O custo por vaga é {{imovel.preco_vaga}},00/mês.</h4>
+
+
+						<div class="col-md-4 margin-top-15" [hidden]="imovel.tipo_garagem != 2">
+							<input type="text"  placeholder="Número de vagas desejadas" #numero_vagas>
+						</div>
+					</div>
+
+				</div>
+				<!-- Row / End -->
+
+				<!-- Row -->
+				<div class="row with-forms margin-top-10" >
+				
+					<h3>Número de moradores</h3>
+					<div class="submit-section" style="top: 30px !important;">
+
+						<h4 *ngIf="imovel.tipo_morador == 0">São permitidos até {{imovel.n_morador}} moradores.</h4><br>
+						<h4 *ngIf="imovel.tipo_morador == 1">São permitidos até {{imovel.n_morador}} moradores. O preço adicional por morador é R${{imovel.preco_morador}},00/mês.</h4>
+
+						<div class="col-md-4 margin-top-15" [hidden]="imovel.tipo_morador != 1">
+							<input type="text" placeholder="Número de moradores" #numero_moradores>
+						</div>
+					</div>
+
+				</div>
+				<!-- Row / End -->
+				
+				<!--<a class="button preview margin-top-5" (click)="adicionarImovel()">Enviar<i class="fa fa-arrow-circle-right"></i></a>-->
+				<a class="button preview margin-top-60" (click)="alugar(garantia, numero_vagas.value, numero_moradores.value, email_fiador.value, data_entrada.value)">Enviar<i class="fa fa-arrow-circle-right"></i></a>
+
+				<div style="height: 40px;"></div>
+
+			</div>
+			<!-- Section / End -->	
+		</div>
+	</div>
+
+	<!-- Submit Page -->
+	<div class="col-md-12" *ngIf="!controle_view">
+		<div class="submit-page">
+			<h2>Solicitação de aluguel enviada, entraremos em contato.</h2>
+
+			<a class="button preview margin-top-15" routerLink="/inicio">Voltar Inicio<i class="fa fa-arrow-circle-right"></i></a>
+
+			<div style="height: 40px;"></div>
+		</div>
+	</div>
+</div>
+
+
+
