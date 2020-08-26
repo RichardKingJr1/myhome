@@ -1,0 +1,85 @@
+<!-- Titlebar
+================================================== -->
+<div id="titlebar">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+
+				<h2>Meu Perfil</h2>
+
+				<!-- Breadcrumbs -->
+				<nav id="breadcrumbs">
+					<ul>
+						<li><a href="#">Home</a></li>
+						<li>Meu Perfil</li>
+					</ul>
+				</nav>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Content
+================================================== -->
+<div class="container">
+	<div class="row">
+
+
+		<!-- Widget -->
+		<div class="col-md-4">
+			<div class="sidebar left">
+
+				<div class="my-account-nav-container">
+					
+					<ul class="my-account-nav">
+						<li class="sub-nav-title">Gerenciar Conta</li>
+						<li><a routerLink="/usuario/dados" class="current"><i class="sl sl-icon-user"></i> Meu Perfil</a></li>
+						<li><a routerLink="/usuario/propostas"><i class="sl sl-icon-star"></i> Proposta Pendentes</a></li>
+						<li><a routerLink="/usuario/aprovar-proposta"><i class="sl sl-icon-star"></i>Aprovar Proposta (Proprietário)</a></li>
+					</ul>
+					
+					<ul class="my-account-nav">
+						<li class="sub-nav-title">Gerenciar Alugueis</li>
+						<li><a routerLink="/usuario/minhaspropriedades"><i class="sl sl-icon-docs"></i> Minhas Propriedades</a></li>
+						<li><a routerLink="/usuario/alugando"><i class="sl sl-icon-action-redo"></i> Alugando </a></li>
+					</ul>
+
+					<ul class="my-account-nav">
+						<li><a routerLink="/usuario/mudarsenha"><i class="sl sl-icon-lock"></i> Trocar Senha</a></li>
+						<li><a (click)="deslogar()"><i class="sl sl-icon-power"></i> Sair</a></li>
+					</ul>
+
+				</div>
+
+			</div>
+		</div>
+
+		<div class="col-md-8">
+			<div class="row">
+
+
+				<div class="col-md-8 my-profile">
+					<h4 class="margin-top-0 margin-bottom-30">Minha Conta</h4>
+
+					<label>Nome</label>
+					<input value="Jennie Wilson" type="text" [(ngModel)]="dados.nome">
+
+					<label>Sobrenome</label>
+					<input value="Jennie Wilson" type="text" [(ngModel)]="dados.sobrenome">
+
+					<label>Email</label>
+					<input value="Agent In New York" type="text" [(ngModel)]="dados.email">
+
+					<label>Telefone</label>
+					<input value="(123) 123-456" type="text" [(ngModel)]="dados.telefone">
+
+					<button class="button margin-top-20 margin-bottom-20" (click)="salvarDados()">Salvar Dados</button>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+</div>
