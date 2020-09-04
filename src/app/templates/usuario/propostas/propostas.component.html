@@ -1,0 +1,104 @@
+<!-- Titlebar
+================================================== -->
+<div id="titlebar">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+
+				<h2>Propostas</h2>
+
+				<!-- Breadcrumbs -->
+				<nav id="breadcrumbs">
+					<ul>
+						<li><a href="#">Home</a></li>
+						<li>Propostas</li>
+					</ul>
+				</nav>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Content
+================================================== -->
+<div class="container">
+	<div class="row">
+
+
+		<!-- Widget -->
+		<div class="col-md-4">
+			<div class="sidebar left">
+
+				<div class="my-account-nav-container">
+					
+					<ul class="my-account-nav">
+						<li class="sub-nav-title">Gerenciar Conta</li>
+						<li><a routerLink="/usuario/dados"><i class="sl sl-icon-user"></i> Meu Perfil</a></li>
+						<li><a routerLink="/usuario/propostas"   class="current"><i class="sl sl-icon-star"></i> Proposta Pendentes</a></li>
+						<li><a routerLink="/usuario/aprovar-proposta"><i class="sl sl-icon-star"></i>Aprovar Proposta (Proprietário)</a></li>
+					</ul>
+					
+					<ul class="my-account-nav">
+						<li class="sub-nav-title">Gerenciar Alugueis</li>
+						<li><a routerLink="/usuario/minhaspropriedades"><i class="sl sl-icon-docs"></i> Minhas Propriedades</a></li>
+						<li><a routerLink="/usuario/alugando"><i class="sl sl-icon-action-redo"></i> Alugando </a></li>
+					</ul>
+
+					<ul class="my-account-nav">
+						<li><a routerLink="/usuario/mudarsenha"><i class="sl sl-icon-lock"></i> Trocar Senha</a></li>
+						<li><a (click)="deslogar()"><i class="sl sl-icon-power"></i> Sair</a></li>
+					</ul>
+
+				</div>
+
+			</div>
+		</div>
+
+		<div class="col-md-8" *ngIf="!ctrl_contrato">
+			<table class="manage-table responsive-table">
+
+				<tr>
+					<th><i class="fa fa-file-text"></i> Propriedade</th>
+					<th class="expire-date"><i class="fa fa-calendar"></i> Data de solicitação</th>
+					<th></th>
+				</tr>
+
+				<!-- Item #1 -->
+				<tr *ngFor="let resposta of respostas">
+					<td class="title-container">
+						<img [src]="global.endreco_foto+'imoveis/'+resposta.id_imovel+'_0.jpg'" alt="">
+						<div class="title">
+							<h4><a href="#">{{resposta.endereco}}</a></h4>
+							<span>{{resposta.cidade}}, {{resposta.estado}} </span>
+							<span class="table-property-price">R$ {{resposta.preco}} / mês</span>
+						</div>
+					</td>
+					<td class="expire-date">
+						<!--<p>December 30, 2016</p>-->
+						<p *ngIf="resposta.status == 0 || resposta.status == 5 || resposta.status == 9">Em análise</p>
+						<p *ngIf="resposta.status== 1">Aprovado</p>
+						<p *ngIf="resposta.status== 2">Recusado</p>
+						<p *ngIf="resposta.status== 3">Esperando Assinatura</p>
+						<p *ngIf="resposta.status== 4">Cancelado</p>
+						
+					</td>
+					<td class="action">
+						<a  *ngIf="resposta.status==3" (click)="assinar(resposta.id_alugar)"><i class="fa fa-pencil"></i> Assinar</a>
+						<a  class="delete" (click)="cancelar(resposta.id_alugar)"><i class="fa fa-remove"></i> Cancelar</a>
+					</td>
+				</tr>
+
+			</table>
+		</div>
+
+		<div *ngIf="ctrl_contrato" class="col-md-8">	
+			<h3>Tem certeza que quer cancelar a propostas?</h3>
+			<a class="button" (click)="cancelar_confirmar()">Confirmar</a>
+			<a class="button" (click)="cancelar_cancelar()">Cancelar</a>
+		</div>
+
+	</div>
+
+</div>

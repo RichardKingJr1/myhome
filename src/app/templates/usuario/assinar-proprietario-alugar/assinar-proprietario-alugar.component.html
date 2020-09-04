@@ -1,0 +1,18 @@
+<div class="container" >
+    <div [hidden]="sucesso">
+        <div id='signature-div' style="position: relative; margin: 0 auto; padding:  0 auto; left: 10%; top: 20px;"></div>
+        <div style="position: relative; width: 100%; height: 30px; background-color:white;"></div>
+        <div style="position: relative; left: 8%;"><a routerLink="/usuario/aprovar-proposta"><button style="background-color: #274abb; color: white; border-style: none; height: 30px; width: 80px; border-radius: 2px;">Voltar</button></a><button (click)="cancelar_contrato()" style="background-color: #274abb; color: white; border-style: none; height: 30px; width: 180px; border-radius: 2px; margin-left: 5px;">Cancelar Contrato</button></div>
+        <!--<div style="position: relative; left: 18%;"><a routerLink="/usuario/aprovar-proposta"><button style="background-color: #274abb; color: white; border-style: none; height: 30px; width: 80px; border-radius: 2px;">Voltar</button></a></div>-->
+        <div style="position: relative; width: 100%; height: 30px; background-color:white;"></div>
+    </div>
+ 
+    <!-- Aba de finalização -->
+    <div class="col-md-12" class="confirmacao_assinatura" [hidden]="!sucesso" style="position:relative; height: 300px; top: 50px;">
+        <div class="submit-page">
+            <h2>Contrato assinado com sucesso. Esperando assinatura das outras partes, você será avisado assim que todas as partes assinarem o contrato</h2>
+            <a class="button preview margin-top-15" routerLink="/inicio">Voltar Inicio<i class="fa fa-arrow-circle-right"></i></a>
+            <div style="height: 40px;"></div>
+        </div>
+    </div>
+</div>
