@@ -4,7 +4,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { DadosComponent } from './dados/dados.component';
 import { MinhasPropriedadesComponent } from './minhas-propriedades/minhas-propriedades.component';
-import { AlugandoComponent } from './alugando/alugando.component';
 import { PropostasComponent } from './propostas/propostas.component';
 import { AssinarProprietarioComponent } from './assinar-proprietario/assinar-proprietario.component';
 import { AssinarUsuarioComponent } from './assinar-usuario/assinar-usuario.component';
@@ -16,7 +15,6 @@ const routes: Routes = [
   { path: 'aprovar-proposta',  component: AprovarPropostaComponent},
   { path: 'dados',  component: DadosComponent},
   { path: 'minhaspropriedades',  component: MinhasPropriedadesComponent},
-  { path: 'alugando',  component: AlugandoComponent},
   { path: 'propostas',  component: PropostasComponent},
   { path: 'assinarproprietario/:id',  component: AssinarProprietarioComponent},
   { path: 'assinarusuario/:id',  component: AssinarUsuarioComponent},

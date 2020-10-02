@@ -8,7 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { DadosComponent } from './dados/dados.component';
 import { MinhasPropriedadesComponent } from './minhas-propriedades/minhas-propriedades.component';
-import { AlugandoComponent } from './alugando/alugando.component';
 import { PropostasComponent } from './propostas/propostas.component';
 import { AssinarProprietarioComponent } from './assinar-proprietario/assinar-proprietario.component';
 import { AssinarUsuarioComponent } from './assinar-usuario/assinar-usuario.component';
@@ -25,7 +24,6 @@ import { UsuarioRoutingModule } from './usuario-routing.module';
 
     DadosComponent,
     MinhasPropriedadesComponent,
-    AlugandoComponent,
     PropostasComponent,
     AssinarProprietarioComponent,
     AssinarUsuarioComponent,
