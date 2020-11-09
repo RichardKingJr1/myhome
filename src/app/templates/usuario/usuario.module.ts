@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-
+import { MudarSenhaComponent } from './mudar-senha/mudar-senha.component';
 import { DadosComponent } from './dados/dados.component';
 import { MinhasPropriedadesComponent } from './minhas-propriedades/minhas-propriedades.component';
 import { AlugandoComponent } from './alugando/alugando.component';
@@ -22,7 +22,7 @@ import { UsuarioRoutingModule } from './usuario-routing.module';
 
 @NgModule({
   declarations: [
-
+    MudarSenhaComponent,
     DadosComponent,
     MinhasPropriedadesComponent,
     AlugandoComponent,

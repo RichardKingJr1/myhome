@@ -1,0 +1,78 @@
+<!-- Titlebar
+================================================== -->
+<div id="titlebar">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+
+				<h2>Trocar Senha</h2>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Content
+================================================== -->
+<div class="container">
+	<div class="row">
+
+
+		<!-- Widget -->
+		<div class="col-md-4">
+			<div class="sidebar left">
+
+				<div class="my-account-nav-container">
+					
+					<ul class="my-account-nav">
+						<li class="sub-nav-title">Gerenciar Conta</li>
+						<li><a routerLink="/usuario/dados"><i class="sl sl-icon-user"></i> Meu Perfil</a></li>
+						<li><a routerLink="/usuario/propostas"><i class="sl sl-icon-star"></i> Proposta Pendentes</a></li>
+						<li><a routerLink="/usuario/aprovar-proposta"><i class="sl sl-icon-star"></i>Aprovar Proposta (Proprietário)</a></li>
+					</ul>
+					
+					<ul class="my-account-nav">
+						<li class="sub-nav-title">Gerenciar Alugueis</li>
+						<li><a routerLink="/usuario/minhaspropriedades"><i class="sl sl-icon-docs"></i> Minhas Propriedades</a></li>
+						<li><a routerLink="/usuario/alugando"><i class="sl sl-icon-action-redo"></i> Alugando </a></li>
+					</ul>
+
+					<ul class="my-account-nav">
+						<li><a routerLink="/usuario/mudarsenha"  class="current"><i class="sl sl-icon-lock"></i> Trocar Senha</a></li>
+						<li><a (click)="deslogar()"><i class="sl sl-icon-power"></i> Sair</a></li>
+					</ul>
+
+				</div>
+
+			</div>
+		</div>
+
+		<div class="col-md-8">
+			<div class="row">
+				<div class="col-md-6  my-profile">
+					<h4 class="margin-top-0 margin-bottom-30">Trocar Senha</h4>
+
+					<label>Senha Atual</label>
+					<input type="password" #senha_antiga>
+
+					<label>Senha Nova</label>
+					<input type="password" #senha_nova>
+
+					<label>Confirmar Senha Nova</label>
+					<input type="password" #senha_confirmar>
+
+					<a class="margin-top-20 button" (click)="salvarSenha(senha_antiga.value, senha_nova.value, senha_confirmar.value)">Salvar Senha</a>
+				</div>
+
+				<div class="col-md-6">
+					<div class="notification notice">
+						<p>Sua senha deve ter entre 8 e 12 caracteres</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+</div>
