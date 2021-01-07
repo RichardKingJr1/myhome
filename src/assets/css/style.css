@@ -1540,7 +1540,7 @@ em.mm-counter+a.mm-fullsubopen+span {
 .hamburger-inner::before { top: -10px; outline: none; }
 .hamburger-inner::after { bottom: -10px; outline: none; }
 
-transform: rotate(-90deg); }
+
 
 /* Animation */
 .hamburger--collapse .hamburger-inner {
@@ -2492,6 +2492,7 @@ span.like-icon {
     line-height: 22px;
     background: rgba(74,74,76,0.5);
     transition: 0.3s;
+	pointer-events: none;
 }
 
 .csm-content .compact .listing-img-content span {
@@ -3305,7 +3306,7 @@ button.fs-map-btn.button {
 	top: 0;
 	left: 0;
 	content: "";
-	z-index: 9;
+	/*z-index: 9;*/
 }
 
 .listing-img-container:before {
@@ -3368,6 +3369,7 @@ button.fs-map-btn.button {
 	padding: 0px;
 	overflow: hidden;
 	height: 100px;
+	pointer-events: none;
 }
 
 .listing-badges span {
@@ -6257,11 +6259,11 @@ body .carousel {
 }
 
 .listing-item .owl-next{
-	margin-right: -5px;
+	margin-left: 37% !important;
 }
 
 .listing-item .owl-prev {
-	margin-left: -5px;
+	margin-right: 37% !important;
 }
 
 

@@ -179,22 +179,31 @@
 
 				<!-- Listing Item -->
 				<div class="carousel-item">
-					<div class="listing-item">
-
-						<a (click)="verImovel(imoveis[0].id_imovel, imoveis[0].longitude, imoveis[0].latitude, imoveis[0].preco)" class="listing-img-container">
-
+					<div class="listing-item">						
+						<div class="listing-img-container" style="height: 300px; ">
 							<div class="listing-badges">
 								<span>Alugar</span>
 							</div>
 
+						
 							<div class="listing-img-content">
 								<span class="listing-price">R${{imoveis[0].preco}} <i>por mês</i></span>
 								<!--<span class="like-icon with-tip" data-tip-content="Add to Bookmarks"></span>-->
 							</div>
 
-							<img  style="height: 300px"  [src]="global.endreco_foto+'imoveis/'+imoveis[0].id_imovel+'_0.jpg'" alt="">
-
-						</a>
+							<!--<img  style="height: 300px"  [src]="global.endreco_foto+'imoveis/'+imoveis[0].id_imovel+'_0.jpg'" alt="">-->
+							<div style="height: 300px;">
+								<owl-carousel-o [options]="customOptions">
+							
+									<ng-container *ngFor="let slide of slidesStore">
+										<ng-template carouselSlide [id]="slide">
+										<a (click)="verImovel(imoveis[0].id_imovel, imoveis[0].longitude, imoveis[0].latitude, imoveis[0].preco)" class="listing-img-container"><img style="width: 100%; height: 300px;" [src]="global.endreco_foto+'imoveis/'+imoveis[0].id_imovel+'_'+slide+'.jpg'" [alt]="slide.id" [title]="slide.id"></a>
+										</ng-template>
+									</ng-container>
+								
+								</owl-carousel-o>
+							</div>
+						</div>
 						
 						<div class="listing-content">
 
@@ -226,9 +235,7 @@
 				<!-- Listing Item -->
 				<div class="carousel-item">
 					<div class="listing-item">
-
-						<a (click)="verImovel(imoveis[1].id_imovel, imoveis[1].longitude, imoveis[1].latitude, imoveis[1].preco)" class="listing-img-container">
-
+						<div class="listing-img-container" style="height: 300px; ">
 							<div class="listing-badges">
 								<span>Alugar</span>
 							</div>
@@ -238,9 +245,18 @@
 								<!--<span class="like-icon with-tip" data-tip-content="Add to Bookmarks"></span>-->
 							</div>
 
-							<img style="height: 300px"  [src]="global.endreco_foto+'imoveis/'+imoveis[1].id_imovel+'_0.jpg'" alt="">
-
-						</a>
+							<div style="height: 300px;">
+								<owl-carousel-o [options]="customOptions">
+							
+									<ng-container *ngFor="let slide of slidesStore">
+										<ng-template carouselSlide [id]="slide">
+										<a (click)="verImovel(imoveis[1].id_imovel, imoveis[1].longitude, imoveis[1].latitude, imoveis[1].preco)" class="listing-img-container"><img style="width: 100%; height: 300px;" [src]="global.endreco_foto+'imoveis/'+imoveis[1].id_imovel+'_'+slide+'.jpg'" [alt]="slide.id" [title]="slide.id"></a>
+										</ng-template>
+									</ng-container>
+								
+								</owl-carousel-o>
+							</div>
+						</div>
 						
 						<div class="listing-content">
 
@@ -272,9 +288,7 @@
 				<!-- Listing Item -->
 				<div class="carousel-item">
 					<div class="listing-item">
-
-						<a (click)="verImovel(imoveis[2].id_imovel, imoveis[2].longitude, imoveis[2].latitude, imoveis[2].preco)" class="listing-img-container">
-
+						<div class="listing-img-container" style="height: 300px; ">
 							<div class="listing-badges">
 								<span>Alugar</span>
 							</div>
@@ -284,9 +298,18 @@
 								<!--<span class="like-icon with-tip" data-tip-content="Add to Bookmarks"></span>-->
 							</div>
 
-							<img style="height: 300px"  [src]="global.endreco_foto+'imoveis/'+imoveis[2].id_imovel+'_0.jpg'" alt="">
-
-						</a>
+							<div style="height: 300px;">
+								<owl-carousel-o [options]="customOptions">
+							
+									<ng-container *ngFor="let slide of slidesStore">
+										<ng-template carouselSlide [id]="slide">
+										<a (click)="verImovel(imoveis[2].id_imovel, imoveis[2].longitude, imoveis[2].latitude, imoveis[2].preco)" class="listing-img-container"><img style="width: 100%; height: 300px;" [src]="global.endreco_foto+'imoveis/'+imoveis[2].id_imovel+'_'+slide+'.jpg'" [alt]="slide.id" [title]="slide.id"></a>
+										</ng-template>
+									</ng-container>
+								
+								</owl-carousel-o>
+							</div>
+						</div>
 						
 						<div class="listing-content">
 
@@ -318,9 +341,7 @@
 				<!-- Listing Item -->
 				<div class="carousel-item">
 					<div class="listing-item">
-
-						<a (click)="verImovel(imoveis[3].id_imovel, imoveis[3].longitude, imoveis[3].latitude, imoveis[3].preco)" class="listing-img-container">
-
+						<div class="listing-img-container" style="height: 300px; ">
 							<div class="listing-badges">
 								<span>Alugar</span>
 							</div>
@@ -330,9 +351,18 @@
 								<!--<span class="like-icon with-tip" data-tip-content="Add to Bookmarks"></span>-->
 							</div>
 
-							<img style="height: 300px"  [src]="global.endreco_foto+'imoveis/'+imoveis[3].id_imovel+'_0.jpg'" alt="">
-
-						</a>
+							<div style="height: 300px;">
+								<owl-carousel-o [options]="customOptions">
+							
+									<ng-container *ngFor="let slide of slidesStore">
+										<ng-template carouselSlide [id]="slide">
+										<a (click)="verImovel(imoveis[3].id_imovel, imoveis[3].longitude, imoveis[3].latitude, imoveis[3].preco)" class="listing-img-container"><img style="width: 100%; height: 300px;" [src]="global.endreco_foto+'imoveis/'+imoveis[3].id_imovel+'_'+slide+'.jpg'" [alt]="slide.id" [title]="slide.id"></a>
+										</ng-template>
+									</ng-container>
+								
+								</owl-carousel-o>
+							</div>
+						</div>
 						
 						<div class="listing-content">
 
@@ -364,9 +394,7 @@
 				<!-- Listing Item -->
 				<div class="carousel-item">
 					<div class="listing-item">
-
-						<a (click)="verImovel(imoveis[4].id_imovel, imoveis[4].longitude, imoveis[4].latitude, imoveis[4].preco)" class="listing-img-container">
-
+						<div class="listing-img-container" style="height: 300px; ">
 							<div class="listing-badges">
 								<span>Alugar</span>
 							</div>
@@ -376,9 +404,18 @@
 								<!--<span class="like-icon with-tip" data-tip-content="Add to Bookmarks"></span>-->
 							</div>
 
-							<img style="height: 300px"  [src]="global.endreco_foto+'imoveis/'+imoveis[4].id_imovel+'_0.jpg'" alt="">
-
-						</a>
+							<div style="height: 300px;">
+								<owl-carousel-o [options]="customOptions">
+							
+									<ng-container *ngFor="let slide of slidesStore">
+										<ng-template carouselSlide [id]="slide">
+										<a (click)="verImovel(imoveis[4].id_imovel, imoveis[4].longitude, imoveis[4].latitude, imoveis[4].preco)" class="listing-img-container"><img style="width: 100%; height: 300px;" [src]="global.endreco_foto+'imoveis/'+imoveis[4].id_imovel+'_'+slide+'.jpg'" [alt]="slide.id" [title]="slide.id"></a>
+										</ng-template>
+									</ng-container>
+								
+								</owl-carousel-o>
+							</div>
+						</div>
 
 						<div class="listing-content">
 
@@ -409,9 +446,20 @@
 			</div>
 		</div>
 		<!-- Carousel / End -->
-
+	
 	</div>
 </div>
 
 
 
+<!--<div style="width: 500px; height: 500px;">
+	<owl-carousel-o [options]="customOptions">
+
+		<ng-container *ngFor="let slide of slidesStore">
+		  <ng-template carouselSlide [id]="slide.id">
+			<img  [src]="slide.src" [alt]="slide.id" [title]="slide.id">
+		  </ng-template>
+		</ng-container>
+	
+	</owl-carousel-o>
+</div>-->

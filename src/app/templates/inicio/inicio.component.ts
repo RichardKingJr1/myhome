@@ -6,6 +6,9 @@ import { Router } from '@angular/router';
 import { GlobalService } from 'src/app/siblings/global.service';
 import { GeoServiceService } from 'src/app/siblings/geo-service.service';
 
+import { OwlOptions } from "ngx-owl-carousel-o";
+//import { CarouselModule } from 'ngx-owl-carousel-o';
+
 
 @Component({
   selector: 'app-inicio',
@@ -13,6 +16,26 @@ import { GeoServiceService } from 'src/app/siblings/geo-service.service';
   styleUrls: ['./inicio.component.css']
 })
 export class InicioComponent implements OnInit {
+
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: true,
+    pullDrag: false,
+    dots: true,
+    autoHeight: false,
+    autoWidth: false,
+    navSpeed: 700,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1
+      }
+    },
+    nav: true
+  }
+
+  public slidesStore = [0, 1,2,3,4];
 
   public m_opcoes: string = "more-search-options-trigger";
   public m_opcoes2: string = "more-search-options";
@@ -50,6 +73,13 @@ export class InicioComponent implements OnInit {
   
 
   ngOnInit(): void {
+
+    /*this._inicioService.teste()
+    .subscribe(data=> { 
+      this.slidesStore = data;
+      console.log(data);   
+    });*/
+
     this.global.changeTab(1);
 
     /* adiciona tag de script no modulo (angular nao permite fazer diretament)*/

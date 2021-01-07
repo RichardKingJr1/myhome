@@ -21,6 +21,11 @@ export class InicioService {
     return this.http.get<any>(this.global.endereco+'buscar-imovel.php').pipe(catchError(this.errorHandler));
                     
   }
+
+  teste(): Observable<any[any]> {
+    return this.http.get<any>('./assets/teste.json').pipe(catchError(this.errorHandler));
+                    
+  }
   
   errorHandler(error: HttpErrorResponse){
     return throwError(error.message || "Server Error");

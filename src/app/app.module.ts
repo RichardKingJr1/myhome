@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { NgImageSliderModule } from 'ng-image-slider';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { NgxSpinnerModule } from "ngx-spinner";
@@ -23,6 +25,15 @@ import { VisitarComponent } from './templates/visitar/visitar.component';
 import { AssinarComponent } from './templates/assinar/assinar.component';
 import { AddImovelDeslogadoComponent } from './templates/add-imovel-deslogado/add-imovel-deslogado.component';
 
+/*import { MudarSenhaComponent } from './templates/usuario/mudar-senha/mudar-senha.component';
+import { DadosComponent } from './templates/usuario/dados/dados.component';
+import { MinhasPropriedadesComponent } from './templates/usuario/minhas-propriedades/minhas-propriedades.component';
+import { AlugandoComponent } from './templates/usuario/alugando/alugando.component';
+import { PropostasComponent } from './templates/usuario/propostas/propostas.component';
+import { AprovarPropostaComponent } from './templates/usuario/aprovar-proposta/aprovar-proposta.component';
+import { AssinarProprietarioAlugarComponent } from './templates/usuario/assinar-proprietario-alugar/assinar-proprietario-alugar.component';
+import { AssinarProprietarioComponent } from './templates/usuario/assinar-proprietario/assinar-proprietario.component';
+import { AssinarUsuarioComponent } from './templates/usuario/assinar-usuario/assinar-usuario.component';*/
 
 import { InicioService } from './templates/inicio/service/inicio.service';
 import { GlobalService } from './siblings/global.service';
@@ -69,7 +80,8 @@ import { AddGuardGuard } from './siblings/add-guard.guard';
     InfiniteScrollModule,
     NgxSpinnerModule,
     GooglePlaceModule,
-    Ng2ImgMaxModule
+    Ng2ImgMaxModule,
+    CarouselModule
   ],
   providers: [GlobalService ,InicioService, {provide: LocationStrategy, useClass: HashLocationStrategy}, AuthGuard, AddGuardGuard],
   bootstrap: [AppComponent]

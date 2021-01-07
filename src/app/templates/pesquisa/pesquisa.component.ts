@@ -7,6 +7,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { GeoServiceService } from 'src/app/siblings/geo-service.service';
 import { asapScheduler } from 'rxjs';
 
+import { OwlOptions } from "ngx-owl-carousel-o";
+
 @Component({
   selector: 'app-pesquisa',
   templateUrl: './pesquisa.component.html',
@@ -14,6 +16,26 @@ import { asapScheduler } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush// add this (permite ver atualizações assincronas por demanda)
 })
 export class PesquisaComponent implements OnInit {
+
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: true,
+    //pullDrag: true,
+    dots: true,
+    autoHeight: false,
+    autoWidth: false,
+    navSpeed: 700,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1
+      }
+    },
+    nav: true
+  }
+
+  public slidesStore = [0,1,2,3,4];
 
   constructor(private activatedRoute: ActivatedRoute, private cdr: ChangeDetectorRef, private geoService:GeoServiceService, private router: Router, private _inicioService: InicioService, private global: GlobalService, private renderer2: Renderer2, @Inject(DOCUMENT) private _document) { }
 
