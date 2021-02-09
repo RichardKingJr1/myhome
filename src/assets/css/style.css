@@ -3341,6 +3341,7 @@ button.fs-map-btn.button {
 	width: 100%;
 	box-sizing: border-box;
 	padding: 25px 30px;
+	pointer-events: none;
 }
 
 .listing-img-content span {
@@ -11823,8 +11824,8 @@ body .daterangepicker .drp-buttons button.cancelBtn {
 	------------------------------------- */
 
 	/* Margin Top */
-	.margin-top-010  { margin-top: -70px !important; }
-	.margin-top-020  { margin-top: -30px !important; }
+	.margin-top-010  { margin-top: -117px !important; }
+	.margin-top-020  { margin-top: -150px !important; }
 	.margin-top-0  { margin-top: 0 !important; }
 	.margin-top-1  { margin-top: 1px !important; }
 	.margin-top-2  { margin-top: 2px !important; }

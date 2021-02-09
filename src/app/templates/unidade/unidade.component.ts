@@ -5,6 +5,7 @@ import { UnidadeService } from './service/unidade.service';
 import { GlobalService } from 'src/app/siblings/global.service';
 import { InicioService } from '../inicio/service/inicio.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-unidade',
@@ -27,9 +28,14 @@ export class UnidadeComponent implements OnInit {
   public similares;
   public id_imovel;
 
+  //controle de views
+  public foto_view: boolean = true;
+  public video_view: boolean = false;
+  public mapa_view: boolean = false;
+
   public imageObject: Array<object> = [];
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private _inicioService: InicioService, public global: GlobalService, private _unidadeservice: UnidadeService, private renderer2: Renderer2, @Inject(DOCUMENT) private _document) { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private _inicioService: InicioService, public global: GlobalService, private _unidadeservice: UnidadeService, private renderer2: Renderer2, @Inject(DOCUMENT) private _document, private sanitizer:DomSanitizer) { }
 
   ngOnInit(): void {
 
@@ -60,6 +66,9 @@ export class UnidadeComponent implements OnInit {
       this.imovel = data;
       console.log(this.imovel);  
 
+      if(this.imovel.video != '' && this.imovel.video != null){
+        this.imovel.video=this.sanitizer.bypassSecurityTrustResourceUrl(this.imovel.video);
+      };     
 
       //entrega fotos para o slider
       for (let i = 0; i < this.imovel.tamanho; i++) {
@@ -135,6 +144,22 @@ export class UnidadeComponent implements OnInit {
   }); 
   }
 
-  
+  trocarView(x){
+    this.foto_view = false;
+    this.video_view = false;
+    this.mapa_view = false;
+
+    switch(x){
+      case 1:
+        this.foto_view = true;
+        break;
+      case 2:
+        this.video_view = true;
+        break
+      case 3:
+        this.mapa_view = true;
+        break;
+    };
+  };
 
 }

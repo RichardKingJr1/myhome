@@ -1,11 +1,27 @@
 
 <!-- Content
 ================================================== -->
-<div style="margin-top: 15px;"></div>
-<div class="container">
-	<div class="row margin-bottom-50">
-		<div class="col-md-12">
+<div style="margin-top: 19px;"></div>
+<div *ngIf="foto_view">
+	<div class="row">
+		<div class="col-md-12" style="padding: 7px 10px;">
 			<ng-image-slider [images]="imageObject" [imageSize]="tamanho" [slideImage]='casas' [animationSpeed]="velocidade" #nav></ng-image-slider>
+		</div>
+	</div>
+</div>
+
+<div *ngIf="video_view">
+	<div class="row">
+		<div class="col-md-12" style="background-color: #f7f7f7;">
+			<iframe style="max-width: 100%; display: block; margin: auto;" width="658" height="370" [src]="imovel.video" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		</div>
+	</div>
+</div>
+
+<div *ngIf="mapa_view">
+	<div class="row">
+		<div class="col-md-12">
+
 		</div>
 	</div>
 </div>
@@ -15,15 +31,30 @@
 <div class="container">
 	<div class="row">
 
-		<div class="col-lg-8 col-md-7 sp-content  margin-top-020">	
-			<div class="property-description">
-				<h2>{{imovel.endereco}}, {{imovel.numero}} <span *ngIf="imovel.complemento"> - {{imovel.complemento}} </span> <span class="property-badge">Alugar</span></h2>
-				<span>
-					<a class="listing-address">
-						<i class="fa fa-map-marker"></i>
-						{{imovel.bairro}}, {{imovel.cidade}}
-					</a>
-				</span>
+		<div class="col-lg-8 col-md-7 sp-content" style="display: -webkit-box;">	
+			<div class="property-description" style="margin-left: -17px;">
+				<!--<div id="navigation" class="style-1">-->
+				<div class="botao-foto-video-mapa">
+                    <ul>
+                        <li [ngClass]="{'active': true == foto_view}" (click)="trocarView(1)">Fotos</li>
+                        <li *ngIf="imovel.video != '' && imovel.video != null" [ngClass]="{'active': true == video_view}" (click)="trocarView(2)">Vídeo</li>
+                        <li [ngClass]="{'active': true == mapa_view}" (click)="trocarView(3)">Mapa</li>
+                    </ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-8 col-md-7 sp-content margin-top-10">	
+			<div>
+				<div class="property-description">
+					<h2>{{imovel.endereco}}, {{imovel.numero}} <span *ngIf="imovel.complemento"> - {{imovel.complemento}} </span> <span class="property-badge">Alugar</span></h2>
+					<span>
+						<a class="listing-address">
+							<i class="fa fa-map-marker"></i>
+							{{imovel.bairro}}, {{imovel.cidade}}
+						</a>
+					</span>
+				</div>
 			</div>
 		</div>
 
@@ -166,16 +197,6 @@
 							
 							
 						</div>
-					</div>
-				</div>
-
-				
-				
-				<!-- Video -->
-				<div *ngIf="imovel.video">
-					<h3 class="desc-headline no-border">Video</h3>
-					<div class="responsive-iframe">
-						<iframe width="560" height="315" [src]="imovel.video" frameborder="0" allowfullscreen></iframe>
 					</div>
 				</div>
 				
@@ -355,7 +376,6 @@
 		<!-- Sidebar -->
 		<div class="col-lg-4 col-md-5 sp-sidebar">
 			<div class="sidebar sticky right">
-
 
 				<!-- Booking Widget -->
 				<div class="widget">

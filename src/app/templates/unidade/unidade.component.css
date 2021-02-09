@@ -15,3 +15,34 @@ span.property-badge {
 	margin-left: 4px;
     background-color: #274abb;
 }
+
+.botao-foto-video-mapa ul li{
+	margin: 0 5px;
+	position: relative;
+    float: left;
+	background-color: transparent;
+    border: 1px solid #274abb;
+	color: #274abb;
+	padding: 8px 18px;
+    border-radius: 3px;
+	list-style: none;
+	font-size: 15px;
+	text-decoration: none;
+	transition: all 0.25s;
+}
+
+.botao-foto-video-mapa ul li:hover {
+	background-color: #274abb;
+	color: white;
+	
+}
+	
+.botao-foto-video-mapa ul li a{
+	color: inherit;
+	transition: color 0s;
+}
+
+.active {
+	background-color: #274abb !important;
+	color: white !important;
+}
