@@ -14,6 +14,12 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class UnidadeComponent implements OnInit {
 
+  //mapa
+  public zoom = 15;
+
+  public lat = parseFloat(this.activatedRoute.snapshot.params.lat);
+  public lng = parseFloat(this.activatedRoute.snapshot.params.long);
+
   //controle do html
   public screenWidth: number;
   public tamanho = {width: '33%', height: 350};
@@ -38,6 +44,8 @@ export class UnidadeComponent implements OnInit {
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private _inicioService: InicioService, public global: GlobalService, private _unidadeservice: UnidadeService, private renderer2: Renderer2, @Inject(DOCUMENT) private _document, private sanitizer:DomSanitizer) { }
 
   ngOnInit(): void {
+
+    console.log(this.lat);
 
    console.log(this.activatedRoute.snapshot.params);
 

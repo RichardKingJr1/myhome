@@ -49,7 +49,7 @@ import { SenhaComponent } from './templates/senha/senha.component';
 import { AuthGuard } from './siblings/auth.guard';
 import { AddGuardGuard } from './siblings/add-guard.guard';
 
-
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -81,7 +81,10 @@ import { AddGuardGuard } from './siblings/add-guard.guard';
     NgxSpinnerModule,
     GooglePlaceModule,
     Ng2ImgMaxModule,
-    CarouselModule
+    CarouselModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBwpIoGAWFL4xQnYb7ZT_p9lWQugkhTg10'
+    })
   ],
   providers: [GlobalService ,InicioService, {provide: LocationStrategy, useClass: HashLocationStrategy}, AuthGuard, AddGuardGuard],
   bootstrap: [AppComponent]

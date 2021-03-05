@@ -46,3 +46,7 @@ span.property-badge {
 	background-color: #274abb !important;
 	color: white !important;
 }
+
+agm-map{
+	height: 370px;
+}
