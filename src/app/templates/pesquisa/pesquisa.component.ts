@@ -53,6 +53,9 @@ export class PesquisaComponent implements OnInit {
 
   //processamento de dados
   public imoveis = []; //remover o recebimento do imoveis global
+  public imoveis_gerenciamento = []; 
+  public index_inicial = 0;
+  public index_final = 24;
 
   public n: number = 0;
   public fimSlide = false;
@@ -63,7 +66,7 @@ export class PesquisaComponent implements OnInit {
   public latitude: number;
   public result;
 
-  public formattedAddress = '';
+  public formattedAddress = '';  
 
   //configurando a posição de tendencia de busca
   public posicao = { lat: -23, lng: -46 };
@@ -81,8 +84,23 @@ export class PesquisaComponent implements OnInit {
 
   };
 
+  //variaveis do mapa
+  public lat = parseFloat(this.activatedRoute.snapshot.params.lat);
+  public lng = parseFloat(this.activatedRoute.snapshot.params.lon);
+
+  public zoom = 13;
+  public maxZoom = 100;
+  public minimumClusterSize = 1;
+  public averageCenter = true;
+
+  public coord_lat;
+  public coord_lon;
 
   ngOnInit(): void {
+
+    console.log(parseFloat(this.activatedRoute.snapshot.params.lat));
+    console.log(parseFloat(this.activatedRoute.snapshot.params.lon));
+
     /* adiciona tag de script no modulo (angular nao permite fazer diretament)*/
     const s = this.renderer2.createElement('script');
     s.type = 'text/javascript';
@@ -111,7 +129,8 @@ export class PesquisaComponent implements OnInit {
     //realiza pesquisa via http
     this._inicioService.pesquisarImovel(this.dataObj)
     .subscribe(data=> {  
-        this.imoveis = data;
+        this.imoveis_gerenciamento = data;
+        this.imoveis = this.imoveis_gerenciamento.slice(this.index_inicial, this.index_final);
         //console.log(this.imoveis);
         
         /* adiciona tag de script no modulo (angular nao permite fazer diretament)*/
@@ -147,12 +166,19 @@ export class PesquisaComponent implements OnInit {
         alugar = false;
       };
       //pesquisa novamente para ajustar a ordem
-      this.pesquisar(this.activatedRoute.snapshot.params.endereco, Number(this.activatedRoute.snapshot.params.tipo), Number(this.activatedRoute.snapshot.params.quartos), Number(this.activatedRoute.snapshot.params.banheiros), Number(this.activatedRoute.snapshot.params.min_area), Number(this.activatedRoute.snapshot.params.max_area), Number(this.activatedRoute.snapshot.params.min_preco), Number(this.activatedRoute.snapshot.params.max_preco));      
-      //pesquisar(endereco, alugar, tipo, quartos, banheiros, min_area, max_area, min_preco, max_preco)
+      //this.pesquisar(this.activatedRoute.snapshot.params.endereco, Number(this.activatedRoute.snapshot.params.tipo), Number(this.activatedRoute.snapshot.params.quartos), Number(this.activatedRoute.snapshot.params.banheiros), Number(this.activatedRoute.snapshot.params.min_area), Number(this.activatedRoute.snapshot.params.max_area), Number(this.activatedRoute.snapshot.params.min_preco), Number(this.activatedRoute.snapshot.params.max_preco));      
+      this.pesquisar(this.activatedRoute.snapshot.params.endereco, Number(this.activatedRoute.snapshot.params.tipo), Number(this.activatedRoute.snapshot.params.quartos), Number(this.activatedRoute.snapshot.params.banheiros),Number(this.activatedRoute.snapshot.params.min_preco), Number(this.activatedRoute.snapshot.params.max_preco));
     }
   }
 
-  pesquisar(endereco, tipo, quartos, banheiros, min_area, max_area, min_preco, max_preco){
+  //pesquisar(endereco, tipo, quartos, banheiros, min_area, max_area, min_preco, max_preco){
+  pesquisar(endereco, tipo, quartos, banheiros, min_preco, max_preco){
+    console.log("teste");
+
+    this.index_inicial = 0;
+    this.index_final = 24;
+
+    let min_area, max_area;
 
     //testa os filtros opcionais
     let in_min_preco: number = 0;
@@ -219,7 +245,8 @@ export class PesquisaComponent implements OnInit {
         this._inicioService.pesquisarImovel(this.dataObj)
         .subscribe(data=> { 
           this.global.changeImoveis(data);  
-          this.imoveis = data;
+          this.imoveis_gerenciamento = data;
+          this.imoveis = this.imoveis_gerenciamento.slice(this.index_inicial, this.index_final);
           console.log(this.global.imoveis);
           this.router.navigate(['/pesquisa', endereco, this.latitude, this.longitude, 1, in_min_area, in_max_area, in_min_preco, in_max_preco, in_quartos, in_banheiros, tipo]);
 
@@ -235,14 +262,22 @@ export class PesquisaComponent implements OnInit {
   }
 
   onScroll(){
-    this.dataObj.n = this.dataObj.n + 26;
+    this.index_inicial = this.index_inicial + 24;
+    this.index_final = this.index_final + 24;
+    this.imoveis = this.imoveis.concat(this.imoveis_gerenciamento.slice(this.index_inicial, this.index_final));
+
+    console.log(this.imoveis);
+
+    console.log("Scroll Chamado");
+
+    /*this.dataObj.n = this.dataObj.n + 26;
     console.log(this.dataObj);
     console.log('onscroll funcionando');
     //realiza pesquisa via http
     this._inicioService.pesquisarImovel(this.dataObj)
     .subscribe(data=> {  
         if(data != []){
-          /* adiciona tag de script no modulo (angular nao permite fazer diretament)*/
+          // adiciona tag de script no modulo (angular nao permite fazer diretament)
           const s0 = this.renderer2.createElement('script');
           s0.type = 'text/javascript';
           s0.src = 'assets/scripts/custom.js';
@@ -262,7 +297,7 @@ export class PesquisaComponent implements OnInit {
         this.renderer2.appendChild(this._document.body, s);
         
         this.cdr.detectChanges(); // *trigger change here*
-    });
+    });*/
   }
 
   verImovel(id_imovel, longitude_imovel, latitude_imovel, preco_imovel){
@@ -281,5 +316,21 @@ export class PesquisaComponent implements OnInit {
       this.m_opcoes2 = "more-search-options relative";
     };
   }
+  
+  localizacao(event){
+    console.log(event);
+    this.coord_lat = event.lat;
+    this.coord_lon = event.lng;
 
+  };
+
+  atualizarLocalizacao(){
+    let coordenada1 = this.coord_lat.toString();
+    let coordenada2 = this.coord_lon.toString();
+
+    let coordenada = coordenada1+", "+coordenada2;
+    console.log(coordenada);
+
+    this.pesquisar(coordenada , Number(this.activatedRoute.snapshot.params.tipo), Number(this.activatedRoute.snapshot.params.quartos), Number(this.activatedRoute.snapshot.params.banheiros),Number(this.activatedRoute.snapshot.params.min_preco), Number(this.activatedRoute.snapshot.params.max_preco));
+  }
 }

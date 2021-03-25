@@ -50,6 +50,8 @@ import { AuthGuard } from './siblings/auth.guard';
 import { AddGuardGuard } from './siblings/add-guard.guard';
 
 import { AgmCoreModule } from '@agm/core';
+import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
+
 
 @NgModule({
   declarations: [
@@ -84,7 +86,8 @@ import { AgmCoreModule } from '@agm/core';
     CarouselModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBwpIoGAWFL4xQnYb7ZT_p9lWQugkhTg10'
-    })
+    }),
+    AgmJsMarkerClustererModule
   ],
   providers: [GlobalService ,InicioService, {provide: LocationStrategy, useClass: HashLocationStrategy}, AuthGuard, AddGuardGuard],
   bootstrap: [AppComponent]

@@ -1,0 +1,259 @@
+
+
+<!-- Content
+================================================== -->
+<div class="container">
+	<div style="margin-top: 40px;"></div>
+	<div class="row col-md-custom">
+
+		<div class="col-md-12">
+
+			<!-- Main Search Input -->
+			<div class="main-search-input margin-bottom-35">
+				<input type="text" class="ico-01" placeholder="Busque a cidade, bairro, rua ou universidade" value="" ngx-google-places-autocomplete #placesRef="ngx-places" [options]='options' (onAddressChange)="handleAddressChange($event)" #endereco/>
+				<button class="button" (click)="pesquisar(endereco.value, tipo.value, quartos.value, banheiros.value, min_area.value, max_area.value, min_valor.value, max_valor.value)">Pesquisar</button>
+			</div>
+
+			<!-- Sorting / Layout Switcher -->
+			<div class="row margin-bottom-15">
+
+				<div class="col-md-6">
+					<!-- Sort by -->
+					<div class="sort-by" (click)="onChange(busca_tipo.value)">
+						<label>Ordenar por:</label>
+
+						<div class="sort-by-select">
+							<select data-placeholder="Default order" class="chosen-select-no-single" #busca_tipo>
+								<option value=0>Distancia</option>	
+								<option value=1>Preço</option>
+
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<!-- Layout Switcher -->
+					<div class="layout-switcher">
+						<a href="#" class="grid"><i class="fa fa-th-large"></i></a>
+						<a href="#" class="list"><i class="fa fa-th-list"></i></a>
+					</div>
+				</div>
+			</div>
+
+			
+			<!-- Listings -->
+			<div class="listings-container grid-layout">
+				<div  class="search-results" infiniteScroll [scrollWindow]="true" [infiniteScrollDistance]="1" [infiniteScrollThrottle]="1000" (scrolled)="onScroll()">
+					<!-- Listing Item -->
+					<div class="listing-item" *ngFor="let imovel of imoveis, let z = index">
+
+						<div class="listing-img-container" style="height: 300px; ">
+
+							<div class="listing-badges">
+								<span>Alugar</span>
+							</div>
+
+							<div class="listing-img-content">
+								<span class="listing-price">R${{imovel.preco}} <i>por mês</i> </span>
+							</div>
+
+							<!--<div class="link0" (click)="verImovel(imovel.id_imovel, imovel.longitude, imovel.latitude, imovel.preco)"></div>
+							<div class="link1" (click)="verImovel(imovel.id_imovel, imovel.longitude, imovel.latitude, imovel.preco)"></div>
+							<div class="link2" (click)="verImovel(imovel.id_imovel, imovel.longitude, imovel.latitude, imovel.preco)"></div>-->
+
+							<!--<div style="height: 250px; overflow: hidden;">
+								<div><img [src]="global.endreco_foto+'imoveis/'+imovel.id_imovel+'_0.jpg'" alt=""></div>
+							</div>-->
+
+							<div style="height: 300px;">
+								<owl-carousel-o [options]="customOptions">
+							
+									<ng-container *ngFor="let slide of slidesStore">
+										<ng-template carouselSlide [id]="imovel.id_imovel">
+										<a (click)="verImovel(imovel.id_imovel, imovel.longitude, imovel.latitude, imovel.preco)" class="listing-img-container"><img style="width: 100%; height: 300px;" [src]="global.endreco_foto+'imoveis/'+imovel.id_imovel+'_'+slide+'.jpg'" [alt]="slide.id" [title]="slide.id"></a>
+										<!--<img style="width: 100%; height: 250px; overflow: hidden;" [src]="global.endreco_foto+'imoveis/'+imovel.id_imovel+'_'+slide+'.jpg'" [alt]="slide" [title]="slide">-->
+									</ng-template>
+									</ng-container>
+								
+								</owl-carousel-o>
+							</div>
+
+
+						</div>
+						
+						<div class="listing-content">
+
+							<div class="listing-title">
+								<h4><a (click)="verImovel(imovel.id_imovel, imovel.longitude, imovel.latitude, imovel.preco)">{{ (imovel.endereco.length>24)? (imovel.endereco | slice:0:24)+'..':(imovel.endereco) }}</a></h4>
+								<a class="listing-address popup-gmaps">
+									<i class="fa fa-map-marker"></i>
+									{{imovel.bairro}}, {{imovel.cidade}}, {{imovel.estado}}
+								</a>
+							</div>
+
+							<ul class="listing-details">
+								<li>{{(imovel.area == 0)? '-':(imovel.area)}} m²</li>
+								<li>{{imovel.quartos}} Quartos</li>
+								<li>{{imovel.comodos}} Comodos</li>
+								<li>{{imovel.banheiros}} Banheiros</li>
+							</ul>
+
+							<!--<div class="listing-footer">
+								<a href="#"><i class="fa fa-user"></i> {{imovel.proprietario}}</a>
+								<span><i class="fa fa-calendar-o"></i> {{imovel.data}}</span>
+							</div>-->
+						</div>
+					</div>
+					<button class="button fullwidth" (click)="onScroll()">Carregar Mais</button>	
+					<!-- Listing Item / End -->
+				</div>
+			</div>
+			<!-- Listings Container / End -->
+
+
+		</div>
+
+
+		<!-- Sidebar
+		================================================== -->
+		<div class="col-md-4">
+			<div class="sidebar sticky right">
+
+				<!-- Widget -->
+				<div class="widget margin-bottom-40">
+					<h3 class="margin-top-0 margin-bottom-35">Encontre sua nova casa</h3>
+
+					<!-- Row 
+					<div class="row with-forms">-->
+						<!-- Status 
+						<div class="col-md-12">
+							<select data-placeholder="Comprar ou alugar" class="chosen-select-no-single" #alugar>
+								<option value="1">Alugar</option>
+								<option value="0">Comprar</option>
+							</select>
+						</div>
+					</div>-->
+					<!-- Row / End -->
+
+
+					<!-- Row -->
+					<div class="row with-forms">
+						<!-- Type -->
+						<div class="col-md-12">
+							<select data-placeholder="Tipo de imovel" class="chosen-select-no-single" #tipo>
+								<option value="0">Qualquer tipo</option>	
+								<option value="1">Apartmento</option>
+								<option value="2">Casa</option>
+								<option value="3">Kitnet</option>
+								<option value="4">Pensionato</option>
+							</select>
+						</div>
+					</div>
+					<!-- Row / End -->
+
+					<!-- Row -->
+					<div class="row with-forms">
+
+						<!-- Min Area -->
+						<div class="col-md-6">
+							<select data-placeholder="Quartos" class="chosen-select-no-single" #quartos>
+								<option label="blank"></option>	
+								<option value="0">Quartos (qualquer)</option>	
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+							</select>
+						</div>
+
+						<!-- Max Area -->
+						<div class="col-md-6">
+							<select data-placeholder="Banheiros" class="chosen-select-no-single" #banheiros>
+								<option label="blank"></option>	
+								<option value="0">Banheiros (qualquer)</option>	
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+							</select>
+						</div>
+
+					</div>
+					<!-- Row / End -->
+
+					<!-- Row -->
+					<div class="row with-forms">
+						<!-- Price Range -->
+						<div class="col-md-6">
+							<input placeholder="Preço Mínimo" type="number" #min_valor>
+						</div>
+
+						<div class="col-md-6">
+							<input placeholder="Preço Máximo" type="number" #max_valor>
+						</div>
+					</div>
+
+					<!-- Row -->
+					<div class="row with-forms">
+						<!-- Area Range -->
+						<div class="col-md-6">
+							<input placeholder="Área Mínima" type="number" #min_area>
+						</div>
+
+						<div class="col-md-6">
+							<input placeholder="Área Máxima" type="number" #max_area>
+						</div>
+
+					</div>
+
+					<!-- More Search Options -->
+					<!--<a [class]="m_opcoes" (click)="maisOpcoes()" data-open-title="Additional Features" data-close-title="Additional Features"></a>
+
+					<div [class]="m_opcoes2" >-->
+
+						<!-- Checkboxes -->
+						<!--<div class="checkboxes one-in-row margin-bottom-10">
+					
+							<input id="check-2" type="checkbox" name="check">
+							<label for="check-2">Air Conditioning</label>
+
+							<input id="check-3" type="checkbox" name="check">
+							<label for="check-3">Swimming Pool</label>
+
+							<input id="check-4" type="checkbox" name="check" >
+							<label for="check-4">Central Heating</label>
+
+							<input id="check-5" type="checkbox" name="check">
+							<label for="check-5">Laundry Room</label>	
+
+
+							<input id="check-6" type="checkbox" name="check">
+							<label for="check-6">Gym</label>
+
+							<input id="check-7" type="checkbox" name="check">
+							<label for="check-7">Alarm</label>
+
+							<input id="check-8" type="checkbox" name="check">
+							<label for="check-8">Window Covering</label>
+					
+						</div>-->
+						<!-- Checkboxes / End -->
+
+					<!--</div>-->
+					<!-- More Search Options / End -->
+
+					<button class="button fullwidth margin-top-30" (click)="pesquisar(endereco.value, tipo.value, quartos.value, banheiros.value, min_area.value, max_area.value, min_valor.value, max_valor.value)">Pesquisar</button>
+
+
+				</div>
+				<!-- Widget / End -->
+
+			</div>
+		</div>
+		<!-- Sidebar / End -->
+	</div>
+</div>
+

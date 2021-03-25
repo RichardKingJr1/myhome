@@ -2015,7 +2015,7 @@ a.adv-search-btn.active i.fa.fa-caret-up { transform: rotate(-540deg); }
 .with-forms .col-xs-9, .with-forms .col-sm-9, .with-forms .col-md-9, .with-forms .col-lg-9,
 .with-forms .col-xs-10, .with-forms .col-sm-10, .with-forms .col-md-10, .with-forms .col-lg-10,
 .with-forms .col-xs-11, .with-forms .col-sm-11, .with-forms .col-md-11, .with-forms .col-lg-11,
-.with-forms .col-xs-12, .with-forms .col-sm-12, .with-forms .col-md-12, .with-forms .col-lg-12 {
+.with-forms .col-xs-12, .with-forms .col-sm-12, .with-forms .col-md-12, .with-forms .col-lg-12, .with-forms .col-md-custom {
 	padding: 0 10px;
 }
 
@@ -3237,14 +3237,15 @@ button.fs-map-btn.button {
 	.col-fs-10,
 	.col-fs-9,
 	.col-fs-8,
-	.col-fs-7,
-	.col-fs-6   { width: 100% }
+	.col-fs-7   { width: 100% }
 
+	.col-fs-6,
 	.col-fs-5,
 	.col-fs-4,
-	.col-fs-3,
 	.col-fs-2,
 	.col-fs-1   { width: 50% }
+
+	.col-fs-3	{ width: 25% }
 }
 
 @media (max-width: 992px) {
