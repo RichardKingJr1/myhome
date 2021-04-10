@@ -38,7 +38,7 @@
 				<!-- Name -->
 				<div class="col-md-4">
 					<h5>Senha</h5>
-					<input type="password" #senha>
+					<input (keydown.enter)="logar(email.value, senha.value)" type="password" #senha>
 				</div>
 			</div>
 			<!-- Row / End -->

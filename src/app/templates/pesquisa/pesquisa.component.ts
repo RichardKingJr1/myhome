@@ -167,12 +167,12 @@ export class PesquisaComponent implements OnInit {
       };
       //pesquisa novamente para ajustar a ordem
       //this.pesquisar(this.activatedRoute.snapshot.params.endereco, Number(this.activatedRoute.snapshot.params.tipo), Number(this.activatedRoute.snapshot.params.quartos), Number(this.activatedRoute.snapshot.params.banheiros), Number(this.activatedRoute.snapshot.params.min_area), Number(this.activatedRoute.snapshot.params.max_area), Number(this.activatedRoute.snapshot.params.min_preco), Number(this.activatedRoute.snapshot.params.max_preco));      
-      this.pesquisar(this.activatedRoute.snapshot.params.endereco, Number(this.activatedRoute.snapshot.params.tipo), Number(this.activatedRoute.snapshot.params.quartos), Number(this.activatedRoute.snapshot.params.banheiros),Number(this.activatedRoute.snapshot.params.min_preco), Number(this.activatedRoute.snapshot.params.max_preco));
+      this.pesquisar(this.activatedRoute.snapshot.params.endereco, Number(this.activatedRoute.snapshot.params.tipo), Number(this.activatedRoute.snapshot.params.quartos), Number(this.activatedRoute.snapshot.params.banheiros),Number(this.activatedRoute.snapshot.params.min_preco), Number(this.activatedRoute.snapshot.params.max_preco), 0);
     }
   }
 
   //pesquisar(endereco, tipo, quartos, banheiros, min_area, max_area, min_preco, max_preco){
-  pesquisar(endereco, tipo, quartos, banheiros, min_preco, max_preco){
+  pesquisar(endereco, tipo, quartos, banheiros, min_preco, max_preco, ctrl){
     console.log("teste");
 
     this.index_inicial = 0;
@@ -222,6 +222,13 @@ export class PesquisaComponent implements OnInit {
         //console.log(data.results[0].geometry.location),
         (this.latitude = data.results[0].geometry.location.lat);
         (this.longitude = data.results[0].geometry.location.lng);
+
+        if(ctrl){
+          this.lat = this.latitude;
+          this.lng = this.longitude;
+        };
+        
+
         console.log(this.latitude);
 
         //empacota dados em um objeto
@@ -331,6 +338,6 @@ export class PesquisaComponent implements OnInit {
     let coordenada = coordenada1+", "+coordenada2;
     console.log(coordenada);
 
-    this.pesquisar(coordenada , Number(this.activatedRoute.snapshot.params.tipo), Number(this.activatedRoute.snapshot.params.quartos), Number(this.activatedRoute.snapshot.params.banheiros),Number(this.activatedRoute.snapshot.params.min_preco), Number(this.activatedRoute.snapshot.params.max_preco));
+    this.pesquisar(coordenada , Number(this.activatedRoute.snapshot.params.tipo), Number(this.activatedRoute.snapshot.params.quartos), Number(this.activatedRoute.snapshot.params.banheiros),Number(this.activatedRoute.snapshot.params.min_preco), Number(this.activatedRoute.snapshot.params.max_preco), 0);
   }
 }

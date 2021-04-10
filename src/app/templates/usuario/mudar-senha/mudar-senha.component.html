@@ -60,7 +60,7 @@
 					<input type="password" #senha_nova>
 
 					<label>Confirmar Senha Nova</label>
-					<input type="password" #senha_confirmar>
+					<input type="password" (keydown.enter)="salvarSenha(senha_antiga.value, senha_nova.value, senha_confirmar.value)" #senha_confirmar>
 
 					<a class="margin-top-20 button" (click)="salvarSenha(senha_antiga.value, senha_nova.value, senha_confirmar.value)">Salvar Senha</a>
 				</div>

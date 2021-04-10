@@ -28,6 +28,7 @@
 						<h2>Formulário Solicitação de aluguel</h2> <br>
 
 						<h3>Imóvel: {{imovel.endereco}}, {{imovel.cep}}</h3>
+						<h3 [hidden]="imovel.custodia == 1">Administrador: {{imovel.administrador}}</h3>
 
 						<p>Nome: {{usuario.nome}} {{usuario.sobrenome}}</p>
 						<p>Email: {{usuario.email}}</p>

@@ -1,9 +1,10 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 import { MudarSenhaComponent } from './mudar-senha/mudar-senha.component';
 import { DadosComponent } from './dados/dados.component';
@@ -18,6 +19,10 @@ import { AssinarProprietarioAlugarComponent } from './assinar-proprietario-aluga
 //import { AuthGuard } from '../../siblings/auth.guard';
 
 import { UsuarioRoutingModule } from './usuario-routing.module';
+import { AtualizarFotosComponent } from './atualizar-fotos/atualizar-fotos.component';
+
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -30,14 +35,19 @@ import { UsuarioRoutingModule } from './usuario-routing.module';
     AssinarProprietarioComponent,
     AssinarUsuarioComponent,
     AprovarPropostaComponent,
-    AssinarProprietarioAlugarComponent
+    AssinarProprietarioAlugarComponent,
+    AtualizarFotosComponent
   ],
   imports: [
     CommonModule,
     UsuarioRoutingModule,
     FormsModule,
-    HttpClientModule
-  ]
+    HttpClientModule,
+    MatRadioModule,
+    MatCheckboxModule,
+    NgxSpinnerModule
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 
 })
 export class UsuarioModule { }

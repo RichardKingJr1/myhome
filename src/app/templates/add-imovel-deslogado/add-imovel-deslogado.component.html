@@ -58,7 +58,7 @@
 				<!-- Name -->
 				<div class="col-md-4">
 					<h5>Telefone</h5>
-					<input type="text" #telefone>
+					<input type="text" (keydown.enter)="contato(nome.value, email.value, telefone.value)" #telefone>
 				</div>
 
 			</div>

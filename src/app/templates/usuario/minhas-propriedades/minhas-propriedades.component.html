@@ -60,8 +60,8 @@
 			<table class="manage-table responsive-table">
 
 				<tr>
-					<th><i class="fa fa-file-text"></i> Property</th>
-					<th class="expire-date"><i class="fa fa-calendar"></i> Data Contrato</th>
+					<th><i class="fa fa-file-text"></i> Propriedade</th>
+					<th class="expire-date"></th>
 					<th></th>
 				</tr>
 
@@ -75,9 +75,13 @@
 							<span class="table-property-price">R$ {{resposta.preco}} / mês</span>
 						</div>
 					</td>
+					<td class="expire-date">
+						<!--<p>December 30, 2016</p>--> <!-- 8 fica quando outra proposta esta sendo analisada -->
+						<p *ngIf="resposta.custodia == 0">Custodia:<br>{{resposta.administrador}}</p>
+					</td>
 					<td class="action">
 						<a (click)="removerPropriedade(resposta.id_imovel)" class="delete"><i class="fa fa-remove"></i> Remover propriedade</a>
-						<a (click)="solicitarSaida(resposta.id_imovel)" class="delete"><i class="fa fa-remove"></i> Solicitar saida do inquilino</a>
+						<a *ngIf="resposta.custodia == 0" (click)="solicitarSaida(resposta.id_imovel)" class="delete"><i class="fa fa-remove"></i> Solicitar saida do inquilino</a>
 						<!--<a (click)="assinarProprietario(resposta.id_imovel)" ><i class="fa fa-pencil"></i> Assinar</a>-->
 					</td>
 				</tr>
@@ -91,7 +95,13 @@
 							<span>{{resposta.cidade}}, {{resposta.estado}} </span>
 						</div>
 					</td>
+					<td class="expire-date">
+						<!--<p>December 30, 2016</p>--> <!-- 8 fica quando outra proposta esta sendo analisada -->
+					</td>
 					<td class="action">
+						<!-- <a (click)="assinarProprietario(resposta.id_imovel)" *ngIf="resposta.status == 3"  ><i class="fa fa-pencil"></i> Assinar/Recusar</a> -->
+						<a (click)="atualizarFotos(resposta.id_imovel, resposta.tamanho)" class="delete"><i class="fa fa-pencil"></i>Atualizar Dados</a>
+						<!--<a (click)="atualizarFotos(resposta.id_imovel, resposta.tamanho)" class="delete"><i class="fa fa-pencil"></i>Atualizar Fotos</a>-->
 						<a (click)="removerPropriedade(resposta.id_imovel)" class="delete"><i class="fa fa-remove"></i> Remover propriedade</a>
 					</td>
 				</tr>

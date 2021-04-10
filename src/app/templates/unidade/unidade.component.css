@@ -50,3 +50,9 @@ span.property-badge {
 agm-map{
 	height: 370px;
 }
+
+
+.desativado{
+	pointer-events: none;
+	background-color: grey;
+}

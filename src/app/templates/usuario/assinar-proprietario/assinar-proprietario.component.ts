@@ -1,3 +1,4 @@
+/******************** Não sendo utilizado *********************** */
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -22,7 +23,7 @@ export class AssinarProprietarioComponent implements OnInit {
         this.respostas = data; 
         let parent = this;
         d4sign.configure({
-            container: "signature-div",
+            container: "signature-div1",
             key: this.respostas.id_d4,
             protocol: "https",
             host: "secure.d4sign.com.br/embed/viewblob",

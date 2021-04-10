@@ -127,7 +127,7 @@
 			<h5>Fotos</h5>
 			<span style="overflow: auto; height: 130px; width: 99999px;"><img (click)="excluir1(i)" *ngFor="let url of urls; let i = index" [src]="url" alt="" style="margin: 10px 5px; height: 120px;"></span>
 			
-			<input class="input_imagens" type="file" (change) = "selectFiles($event)" multiple=""  accept="image/jpg">
+			<input class="input_imagens" type="file" (change) = "selectFiles($event)" multiple=""  accept=".jpg">
 
 			<!--<h5>Planta</h5>
 			<span  style="overflow: auto; height: 130px; width: 99999px;"><img (click)="excluir2(c)" *ngFor="let fp of fps; let c = index" [src]="fp" alt="" style="margin: 10px 5px; height: 120px;"></span>

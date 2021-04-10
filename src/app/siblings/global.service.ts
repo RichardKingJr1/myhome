@@ -36,7 +36,7 @@ export class GlobalService {
   public tab:number = 1;
   public observableTab;
 
-  constructor(private visivelGlobal: GlobalVisivelService, private http: HttpClient, private router: Router) { 
+  constructor(private visivelGlobal: GlobalVisivelService) { 
     this.observableTab= new BehaviorSubject<number>(this.tab);
   }
 
@@ -74,30 +74,6 @@ export class GlobalService {
     localStorage.removeItem("email");
     localStorage.removeItem("senha");
   }
-
-  /*pre_login(rota){  **********sistema para manter usuario logado, precisa ser aprimorado para funcionar juntamente com o authguard (teoricamente função é jamada no app.component e no auth.guard mas nao funcionou em nenhym******************
-    let loginAuth = {
-      email: localStorage.getItem('email'),
-      senha: localStorage.getItem('senha')
-    }
-
-    if(loginAuth.email && loginAuth.senha){
-      this.http.post(this.endereco+'login.php',loginAuth)
-      .subscribe(data=> {
-        if(data != "erro"){
-          let id = data;
-          this.logar(id['id_usuario'], loginAuth.email, loginAuth.senha);
-
-          if(rota == "/alugar"){
-            this.router.navigate(["/inicio"]);
-          }else{
-            this.router.navigate([rota]);
-          };
-        };
-      });
-    };
-
-  }*/
 
 
 }

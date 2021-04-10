@@ -1,0 +1,219 @@
+<!-- Titlebar
+================================================== -->
+<div id="titlebar">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+
+				<h2>Fotos</h2>
+
+				<!-- Breadcrumbs -->
+				<nav id="breadcrumbs">
+					<ul>
+						<li><a href="#">Home</a></li>
+						<li>Minhas Propriedades</li>
+					</ul>
+				</nav>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Content
+================================================== -->
+<div class="container">
+	<div class="row">
+
+
+		<!-- Widget -->
+		<div class="col-md-4">
+			<div class="sidebar left">
+
+				<div class="my-account-nav-container">
+					
+					<ul class="my-account-nav">
+						<li class="sub-nav-title">Gerenciar Conta</li>
+						<li><a routerLink="/usuario/dados"><i class="sl sl-icon-user"></i> Meu Perfil</a></li>
+						<li><a routerLink="/usuario/propostas"><i class="sl sl-icon-star"></i> Proposta Pendentes</a></li>
+						<li><a routerLink="/usuario/aprovar-proposta"><i class="sl sl-icon-star"></i>Aprovar Proposta (Proprietário)</a></li>
+					</ul>
+					
+					<ul class="my-account-nav">
+						<li class="sub-nav-title">Gerenciar Alugueis</li>
+						<li><a routerLink="/usuario/minhaspropriedades" class="current"><i class="sl sl-icon-docs"></i> Minhas Propriedades</a></li>
+						<li><a routerLink="/usuario/alugando"><i class="sl sl-icon-action-redo"></i> Alugando </a></li>
+					</ul>
+
+					<ul class="my-account-nav">
+						<li><a routerLink="/usuario/mudarsenha"><i class="sl sl-icon-lock"></i> Trocar Senha</a></li>
+						<li><a (click)="deslogar()"><i class="sl sl-icon-power"></i> Sair</a></li>
+					</ul>
+
+				</div>
+
+			</div>
+		</div>
+
+        <div class="col-md-8" >
+			<div class="row">
+				<div class="col-md-8 my-profile margin-bottom-20">
+					<h3 class="margin-top-0 margin-bottom-20">Minha Conta</h3>
+
+					<label>Aluguel</label>
+					<input [value]="resposta.aluguel" type="text" #aluguel>
+
+					<label>Condomínio</label>
+					<input [value]="resposta.condominio" type="text" #condominio>
+
+					<label>IPTU</label>
+					<input [value]="resposta.iptu" type="text" #iptu>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-8 my-profile margin-bottom-20">
+					<!-- Checkboxes -->
+					<label>Garagem</label>
+					<div class="checkboxes in-row margin-bottom-10">
+						<mat-radio-group [(ngModel)]="garagem">
+							<mat-radio-button class="checkbox" value="0" >Sem garegem</mat-radio-button>					
+							<mat-radio-button class="checkbox" value="1" >Garagem inclusa</mat-radio-button>					
+							<mat-radio-button class="checkbox" value="2" >Garagem a parte</mat-radio-button>
+						</mat-radio-group>
+					</div>
+
+					<!--numero de vagas-->
+					<div style="padding: 0;" class="col-md-8" [hidden]="garagem != 1" [hidden]="garagem != 1">
+						<h5>Numero de Vagas</h5>
+						<input type="text" [value]="resposta.n_vagas" #garagem_inclusa>
+					</div> 
+			
+					<!--numero de vagas disponiveis-->
+					<div style="padding: 0;"  class="col-md-8" [hidden]="garagem != 2">
+						<h5>Numero de Vagas Disponíveis</h5>
+						<input type="text" [value]="resposta.n_vagas" #garagem_a_parte>
+					</div>
+	
+					<!--Preço de cada vaga-->
+					<div style="padding: 0;"  class="col-md-8" [hidden]="garagem != 2">
+						<h5>Preço de cada vaga</h5>
+						<input type="text" [value]="resposta.preco_vaga"  #garagem_preco>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-8 my-profile margin-bottom-20">
+					<label>Numero de moradores aumenta o rateio?</label>
+					<div class="checkboxes in-row margin-bottom-10">
+						<mat-radio-group [(ngModel)]="moradores">
+							<mat-radio-button class="checkbox" value="0" >Não</mat-radio-button>					
+							<mat-radio-button class="checkbox" value="1" >Sim</mat-radio-button>					
+						</mat-radio-group>
+					</div>
+					<!--Preço por morador-->
+					<div style="padding: 0;" class="col-md-8">
+						<h5>Numero máximo de moradores</h5>
+						<input type="text" [value]="resposta.n_morador" #numero_moradores>
+					</div>
+
+					<!--Preço por morador-->
+					<div style="padding: 0;" class="col-md-8" [hidden]="moradores != 1">
+						<h5>Preço por morador</h5>
+						<input type="text" [value]="resposta.preco_morador" #moradores_preco>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-8 my-profile margin-bottom-20">
+					<label>Opções de contrato</label>
+					<div class="checkboxes in-row margin-bottom-20">
+						<mat-checkbox class="checkbox" [checked]="resposta.sgarantia" #sgarantia>Sem garantia</mat-checkbox>
+					
+						<mat-checkbox class="checkbox" [checked]="resposta.fiador" #fiador>Fiador</mat-checkbox>
+					
+						<mat-checkbox class="checkbox" [checked]="resposta.caucao" #caucao>Cheque caução</mat-checkbox>
+					
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-8 my-profile margin-bottom-20">
+					<label>Desocupação antes de 30 mêses?</label>
+					<div class="checkboxes in-row margin-bottom-10">
+						<mat-radio-group [(ngModel)]="janela_desocupacao">
+							<mat-radio-button class="checkbox" value="2" >Saída depois de 12 mêses</mat-radio-button>
+							<mat-radio-button class="checkbox" value="1" >Janela em mês específico</mat-radio-button>
+							<mat-radio-button class="checkbox" value="0" >Não</mat-radio-button>										
+						</mat-radio-group>
+					</div>
+
+					<div style="padding: 0;" class="col-md-8" [hidden]="janela_desocupacao != 1">
+						<h5>Mês da Janela</h5>
+						<input type="text" [value]="resposta.mes_janela" #mes_janela>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-8 my-profile margin-bottom-20">
+					<label>Taxa de saída</label>
+					<div class="checkboxes in-row margin-bottom-10">
+						<mat-radio-group [(ngModel)]="taxa_desocupacao">
+							<mat-radio-button class="checkbox" value="0" >Será cobrado apenas a limpeza e pintura do imóvel</mat-radio-button>
+							<mat-radio-button class="checkbox" value="1" ><div style="position: relative; width: 100%; overflow: hidden;">Será cobrada apenas uma taxa de saída</div></mat-radio-button>									
+						</mat-radio-group>
+					</div>
+
+					<div style="padding: 0;" class="col-md-8" [hidden]="taxa_desocupacao != 1">
+						<h5>Valor Taxa</h5>
+						<input type="text" [value]="resposta.valor_taxa" #valor_taxa>
+					</div>
+				</div>
+			</div>
+
+
+
+
+			<!--<div class="row">
+				<div class="col-md-8 my-profile margin-bottom-20">
+					<h3 class="margin-top-0 margin-bottom-20">Minha Conta</h3>
+
+					<label>Aluguel</label>
+					<input value="(123) 123-456" type="text">
+
+					<label>Condomínio</label>
+					<input value="(123) 123-456" type="text">
+
+					<label>IPTU</label>
+					<input value="(123) 123-456" type="text">
+				</div>
+			</div>-->
+
+			<div class="row">
+				<div class="col-md-12 my-profile">
+					<h3 class="margin-top-0 margin-bottom-20">Fotos</h3>
+
+					<span style="overflow: auto; height: 130px; width: 99999px;"><img (click)="excluir1(i, url.index)" *ngFor="let url of urls; let i = index" [src]="url.url" alt="" style="margin: 10px 5px; height: 120px;"></span>
+					
+					<input class="input_imagens" type="file" (change)="selectFiles($event)" multiple=""  accept="image/jpg">
+
+					<a (click)="atualizar(sgarantia._checked, fiador._checked, caucao._checked, numero_moradores.value, moradores_preco.value, garagem_inclusa.value, garagem_a_parte.value, garagem_preco.value, aluguel.value, condominio.value, iptu.value, mes_janela.value, valor_taxa.value)" class="margin-top-40 button">Atualizar</a>
+				</div>				
+			</div>
+		</div>
+
+        
+		<!--<div *ngIf="ctrl_remover" class="col-md-8">	
+			<h3>Tem certeza que quer remover o imovel da myhome?</h3>
+			<a class="button" (click)="removerConfirmar()">Confirmar</a>
+			<a class="button" (click)="removerCancelar()">Cancelar</a>
+		</div>-->
+
+	</div>
+</div>

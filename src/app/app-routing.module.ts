@@ -43,7 +43,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'criar-conta', component: CriarContaComponent},
   { path: 'senha', component: SenhaComponent},
-  {path: 'usuario',  canActivate: [AuthGuard], loadChildren: () => import('./templates/usuario/usuario.module').then(m => m.UsuarioModule)},
+  { path: 'usuario',  canActivate: [AuthGuard], loadChildren: () => import('./templates/usuario/usuario.module').then(m => m.UsuarioModule)},
   { path: "**", component: LoginComponent}
 ];
 

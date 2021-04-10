@@ -10,6 +10,7 @@ import { AssinarProprietarioComponent } from './assinar-proprietario/assinar-pro
 import { AssinarUsuarioComponent } from './assinar-usuario/assinar-usuario.component';
 import { AprovarPropostaComponent } from './aprovar-proposta/aprovar-proposta.component';
 import { AssinarProprietarioAlugarComponent } from './assinar-proprietario-alugar/assinar-proprietario-alugar.component';
+import { AtualizarFotosComponent } from './atualizar-fotos/atualizar-fotos.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dados', pathMatch: 'full'},
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'minhaspropriedades',  component: MinhasPropriedadesComponent},
   { path: 'alugando',  component: AlugandoComponent},
   { path: 'propostas',  component: PropostasComponent},
+  { path: 'fotos/:id/:numero', component: AtualizarFotosComponent},
   { path: 'assinarproprietario/:id',  component: AssinarProprietarioComponent},
   { path: 'assinarusuario/:id',  component: AssinarUsuarioComponent},
   { path: 'assinar-usuario-proprietario/:id', component: AssinarProprietarioAlugarComponent},

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -52,7 +52,6 @@ import { AddGuardGuard } from './siblings/add-guard.guard';
 import { AgmCoreModule } from '@agm/core';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,6 +88,7 @@ import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
     }),
     AgmJsMarkerClustererModule
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [GlobalService ,InicioService, {provide: LocationStrategy, useClass: HashLocationStrategy}, AuthGuard, AddGuardGuard],
   bootstrap: [AppComponent]
 })

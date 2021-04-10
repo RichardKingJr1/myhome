@@ -76,17 +76,19 @@
 						</div>
 					</td>
 					<td class="expire-date">
-						<!--<p>December 30, 2016</p>-->
-						<p *ngIf="resposta.status == 0 || resposta.status == 5 || resposta.status == 9">Em análise</p>
-						<p *ngIf="resposta.status== 1">Aprovado</p>
-						<p *ngIf="resposta.status== 2">Recusado</p>
+						<!--<p>December 30, 2016</p>--> <!-- 8 fica quando outra proposta esta sendo analisada -->
+						<p *ngIf="resposta.status == 0  || resposta.status == 9 || resposta.status == 8">Em análise</p>
+						<p *ngIf="resposta.status== 1">Aprovado</p>	
+						<!-- 2 é recusa do prop ou da imob / 6 é a recusa pelo imob ter sido locado para outro / 5 negado antes de enviar para assinatura -->
+						<p *ngIf="resposta.status== 2 || resposta.status == 6 || resposta.status == 5">Recusado</p>
 						<p *ngIf="resposta.status== 3">Esperando Assinatura</p>
-						<p *ngIf="resposta.status== 4">Cancelado</p>
+						<p *ngIf="resposta.status == 4">Cancelado</p>
 						
 					</td>
 					<td class="action">
-						<a  *ngIf="resposta.status==3" (click)="assinar(resposta.id_alugar)"><i class="fa fa-pencil"></i> Assinar</a>
-						<a  class="delete" (click)="cancelar(resposta.id_alugar)"><i class="fa fa-remove"></i> Cancelar</a>
+						<a  *ngIf="resposta.status==3" (click)="assinar(resposta.id_alugar)"><i class="fa fa-pencil"></i>Assinar/<br>Cancelar</a>
+						<!-- <a  *ngIf="resposta.status == 3"  class="delete" (click)="cancelar(resposta.id_alugar)"><i class="fa fa-remove"></i> Cancelar</a> -->
+						<a  *ngIf="resposta.status != 3"  class="delete" (click)="cancelar(resposta.id_alugar)"><i class="fa fa-remove"></i> Cancelar</a>
 					</td>
 				</tr>
 

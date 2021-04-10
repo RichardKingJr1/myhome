@@ -23,6 +23,7 @@ export class MinhasPropriedadesComponent implements OnInit {
   public ctrl_solicitar: boolean = false;
 
   ngOnInit(): void {
+    console.log("aqui funciona");
     this.http.post(this.global.endereco+'buscar-propriedades.php', this.global.id_usuario)
       .subscribe(data=> {
         this.respostas = data;   
@@ -77,5 +78,10 @@ export class MinhasPropriedadesComponent implements OnInit {
   assinarProprietario(id_imovel){
     console.log('assinar funcionou');
     this.router.navigate(['/usuario/assinarproprietario', id_imovel]);
+  }
+
+  atualizarFotos(id_imovel, numero){
+    console.log('assinar funcionou');
+    this.router.navigate(['/usuario/fotos', id_imovel, numero]);
   }
 }

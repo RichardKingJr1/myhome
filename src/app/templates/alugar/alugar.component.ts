@@ -88,7 +88,7 @@ export class AlugarComponent implements OnInit {
   mudarDesconto(cupom){
     console.log(cupom);
 
-    this.http.post(this.global.endereco+'desconto.php', cupom)
+    this.http.post(this.global.endereco+'desconto.php', JSON.stringify(cupom))
     .subscribe(data=> {
       this.desconto_resposta = data['desconto'];
       this.afiliado_resposta = data['id_afiliado'];
@@ -196,6 +196,7 @@ export class AlugarComponent implements OnInit {
     dataObj.append('vagas_atv', numero_vagas.toString());
     dataObj.append('moradores_atv', numero_moradores.toString());
     dataObj.append('data_entrada', data_entrada);
+    dataObj.append('custodia', this.imovel.custodia);
 
     if(garantia == 1){
       dataObj.append('fiador', this.id_usuario.id_usuario.toString());

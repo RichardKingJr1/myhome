@@ -85,8 +85,8 @@
 						
 					</td>
 					<td class="action">
-						<a  *ngIf="resposta.status==3" (click)="assinar(resposta.id_alugar)"><i class="fa fa-pencil"></i> Assinar</a>
-						<a  class="delete" (click)="cancelar(resposta.id_alugar)"><i class="fa fa-remove"></i> Cancelar</a>
+						<a  *ngIf="resposta.status==3" (click)="assinar(resposta.id_alugar)"><i class="fa fa-pencil"></i> Assinar/<br>Cancelar</a>
+						<a  *ngIf="resposta.status != 3" class="delete" (click)="cancelar(resposta.id_alugar)"><i class="fa fa-remove"></i> Cancelar</a>
 					</td>
 				</tr>
 

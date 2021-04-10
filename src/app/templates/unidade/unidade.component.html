@@ -92,6 +92,14 @@
 					</p>
 				</div>
 
+				<!-- Administrador -->
+				<h3  *ngIf="imovel.custodia == 0" class="desc-headline">Administrador</h3>
+				<div *ngIf="imovel.custodia == 0" >
+					<p>
+						{{imovel.administrador}}
+					</p>
+				</div>
+
 				<!-- Details -->
 				<!--<h3 class="desc-headline">Details</h3>
 				<ul class="property-features margin-top-0">
@@ -386,8 +394,8 @@
 						
 						<!-- Book Now -->
 						<!--<a class="button book-now fullwidth margin-top-5" routerLink="/visitar/{{id_imovel}}" (click)="visitar()">Agendar Visita</a>-->
-						<a class="button book-now fullwidth margin-top-5" routerLink="/visitar/{{id_imovel}}" >Agendar Visita</a>
-						<a class="button book-now fullwidth margin-top-5" (click)="alugar(id_imovel)">Fazer Proposta</a>
+						<a [ngClass]="{'desativado': imovel == false}" class="button book-now fullwidth margin-top-5" routerLink="/visitar/{{id_imovel}}" >Agendar Visita</a>
+						<a [ngClass]="{'desativado': imovel == false}" class="button book-now fullwidth margin-top-5" (click)="alugar(id_imovel)">Fazer Proposta</a>
 					</div>
 
 				</div>

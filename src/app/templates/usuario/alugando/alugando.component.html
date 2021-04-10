@@ -61,7 +61,7 @@
 
 				<tr>
 					<th><i class="fa fa-file-text"></i> Propriedade</th>
-					<th class="expire-date"><i class="fa fa-calendar"></i> Data do contrato</th>
+					<th class="expire-date"> </th>
 					<th></th>
 				</tr>
 
@@ -75,8 +75,18 @@
 							<span class="table-property-price">R$ {{resposta.preco}} / mês</span>
 						</div>
 					</td>
-					<td class="expire-date">December 30, 2016</td>
-					<td class="action">
+					<td *ngIf="resposta.custodia  == 0" class="expire-date">
+						<!--<p>December 30, 2016</p>--> <!-- 8 fica quando outra proposta esta sendo analisada -->
+						<p>Administradora: <br>{{resposta.administrador}}</p>
+					</td>
+					<td *ngIf="resposta.custodia  == 1" class="expire-date">
+						<!--<p>December 30, 2016</p>--> <!-- 8 fica quando outra proposta esta sendo analisada -->
+					</td>
+					<td *ngIf="resposta.custodia  == 0" class="action">
+						<!--<a (click)="boleto(resposta.id_imovel)"><i class="fa fa-pencil"></i> 2ª via boleto</a>-->
+						<!-- <a (click)="desocupar(resposta.id_imovel)" class="delete"><i class="fa fa-remove"></i> Desocupar </a> -->
+					</td>
+					<td *ngIf="resposta.custodia  == 1" class="action">
 						<!--<a (click)="boleto(resposta.id_imovel)"><i class="fa fa-pencil"></i> 2ª via boleto</a>-->
 						<a (click)="desocupar(resposta.id_imovel)" class="delete"><i class="fa fa-remove"></i> Desocupar </a>
 					</td>

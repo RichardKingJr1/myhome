@@ -55,7 +55,8 @@ export class AddImovelComponent implements OnInit {
           let image = event.target.files[i];
 
           //teste se é um arquivo png
-          if(image.type == "image/png" || image.type == "image/jpg" || image.type == "image/jpeg"){
+          //if(image.type == "image/png" || image.type == "image/jpg" ){
+          if(image.type == "image/jpg" || image.type == "image/jpeg"){
             //aplica resize na imagem
             this.ng2ImgMax.resizeImage(image, 900, 10000).subscribe(
               result => {
@@ -83,7 +84,7 @@ export class AddImovelComponent implements OnInit {
               this.urls.push(event.target.result);
             }
           }else{
-            window.alert("São aceitas apenas imagens no formato PNG, a imagem "+(i+1)+" enviada não foi aceita");
+            window.alert("São aceitas apenas imagens no formato JPG, a imagem "+(i+1)+" enviada não foi aceita");
           };
           
         }else{

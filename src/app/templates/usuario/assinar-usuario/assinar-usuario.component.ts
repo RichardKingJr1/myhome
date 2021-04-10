@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GlobalService } from 'src/app/siblings/global.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 declare const d4sign: any;
 
 @Component({
@@ -11,7 +12,7 @@ declare const d4sign: any;
 })
 export class AssinarUsuarioComponent implements OnInit {
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private http: HttpClient, private global: GlobalService) { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private http: HttpClient, private global: GlobalService, private spinner: NgxSpinnerService) { }
 
   public respostas;
   public sucesso = false;
@@ -44,7 +45,7 @@ export class AssinarUsuarioComponent implements OnInit {
   }
 
   cancelar_contrato(){
-
+    this.spinner.show();
     let dataObj = {
       id_alugar: this.activatedRoute.snapshot.params.id,
       contrato_locacao: this.respostas.contrato_locacao,
@@ -56,9 +57,11 @@ export class AssinarUsuarioComponent implements OnInit {
     this.http.post(this.global.endereco+'d4sign/cancelar-contrato-aluguel.php', dataObj)
     .subscribe(data=> {
       if(data == "ok"){
+        this.spinner.hide();  
         window.alert('Contrato cancelado com sucesso');
         this.router.navigate(['/']);
       }else{
+        this.spinner.hide();  
         window.alert('Ocorreu um erro, entre em contato por email ou telefone');
         this.router.navigate(['/']);
       };
