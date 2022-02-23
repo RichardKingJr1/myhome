@@ -84,7 +84,7 @@ import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
     Ng2ImgMaxModule,
     CarouselModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBwpIoGAWFL4xQnYb7ZT_p9lWQugkhTg10'
+      apiKey: 'process.env.MAPS'
     }),
     AgmJsMarkerClustererModule
   ],
